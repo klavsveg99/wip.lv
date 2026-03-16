@@ -1,0 +1,7 @@
+node_modules/
+.cache/
+.opencode/
+.config/opencode/
+.DS_Store
+vendor/
+composer.lock
