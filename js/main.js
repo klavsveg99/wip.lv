@@ -242,12 +242,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mainNav = document.getElementById('mainNav');
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    
+    const backToTop = document.getElementById('backToTop');
+
     function openMobileMenu() {
         mainNav.classList.add('active');
         mobileMenuToggle.classList.add('active');
         mobileMenuOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
+        if (backToTop) backToTop.style.display = 'none';
     }
     
     function closeMobileMenu() {
@@ -255,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuToggle.classList.remove('active');
         mobileMenuOverlay.classList.remove('active');
         document.body.style.overflow = '';
+        if (backToTop) backToTop.style.display = '';
     }
     
     if (mobileMenuToggle) {
@@ -345,7 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // BACK TO TOP
-    const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
         if (backToTop) {
             if (window.pageYOffset > 300) {

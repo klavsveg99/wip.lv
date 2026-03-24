@@ -9,15 +9,24 @@
     <meta name="version" content="1.0.0">
     <title>WIP.LV - AI Automatizācija biznesa procesu optimizācijai</title>
     <meta name="description" content="Mēs piedāvājam mākslīgā intelekta risinājumus biznesa procesiem automatizācijai. Palieliniet produktivitāti, samaziniet izmaksas un paātriniet izaugsmi ar mūsu AI automatizācijas pakalpojumiem.">
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="canonical" href="https://wip.lv/">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="WIP.LV">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#2563eb">
+<link rel="manifest" href="manifest.json">
+<link rel="canonical" href="https://wip.lv/">
     <link rel="alternate" hreflang="en" href="https://wip.lv/en.html">
     <link rel="alternate" hreflang="lv" href="https://wip.lv/">
     <meta property="og:title" content="WIP.LV - AI Automatizācija biznesa procesu optimizācijai">
     <meta property="og:description" content="Mēs piedāvājam mākslīgā intelekta risinājumus biznesa procesiem automatizācijai. Palieliniet produktivitāti, samaziniet izmaksas un paātriniet izaugsmi ar mūsu AI automatizācijas pakalpojumiem.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wip.lv/">
-    <link rel="stylesheet" href="css/style.css?v=21">
+    <link rel="stylesheet" href="css/style.css?v=26">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
@@ -27,14 +36,16 @@
                 <div class="logo-text">WIP<span>.LV</span></div>
             </a>
             <nav id="mainNav">
-                <a href="#pakalpojumi">Pakalpojumi</a>
-                <a href="#process">Process</a>
-                <a href="#tehnologijas">Tehnoloģijas</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#nozares">Risinājumi</a>
-                <a href="#secinajumi">Atsauksmes</a>
-                <a href="#cenas">Cenas</a>
-                <a href="#biezi-jautajumi">BUJ</a>
+                <div class="nav-items-grid">
+                    <a href="#pakalpojumi">Pakalpojumi</a>
+                    <a href="#process">Process</a>
+                    <a href="#tehnologijas">Tehnoloģijas</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#nozares">Risinājumi</a>
+                    <a href="#secinajumi">Atsauksmes</a>
+                    <a href="#cenas">Cenas</a>
+                    <a href="#biezi-jautajumi">BUJ</a>
+                </div>
                 <a href="#" class="contact-cta-btn header-cta">Sazināties</a>
                 <div class="lang-switch">
                     <a href="index.html" class="active">LV</a>
@@ -60,31 +71,23 @@
                 <p class="hero-description">Pārtrauciet tērēt laiku atkārtojošiem uzdevumiem. Mūsu AI automatizācijas risinājumi palīdz uzņēmumiem samazināt izmaksas, palielināt efektivitāti un augt bez ierobežojumiem.</p>
                 
                 <div class="hero-actions">
-                    <a href="#" class="btn btn-primary contact-cta-btn">
+                    <a href="#cenas" class="btn btn-primary">
                         <span>Sākt savu automatizāciju</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                     <a href="#" class="btn btn-secondary contact-cta-btn">
-                        <span>Skatīt demonstrāciju</span>
+                        <span>Saņemt konsultāciju</span>
                         <i class="fa-solid fa-play"></i>
                     </a>
                 </div>
                 
                 <div class="hero-social-proof">
-                    <p class="proof-text">Uzticams partneris vadošiem uzņēmumiem</p>
+                    <p class="proof-text">Uzticams partneris uzņēmumiem vairākās nozarēs</p>
                     <div class="proof-avatars">
-                        <div class="avatar" style="background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: white;">
-                            <span>T</span>
-                        </div>
-                        <div class="avatar" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white;">
-                            <span>F</span>
-                        </div>
-                        <div class="avatar" style="background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: white;">
-                            <span>L</span>
-                        </div>
-                        <div class="avatar" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white;">
-                            <span>M</span>
-                        </div>
+                        <img src="images/restorans.png" alt="Client" class="avatar" style="object-fit: contain;">
+                        <img src="images/asl.webp" alt="Client" class="avatar" style="object-fit: contain;">
+                        <img src="images/jef.jpg" alt="Client" class="avatar" style="object-fit: contain;">
+                        <img src="images/katolis.png" alt="Client" class="avatar" style="object-fit: contain; background: white;">
                     </div>
                 </div>
             </div>
@@ -513,7 +516,7 @@
                         <li><i class="fa-solid fa-check"></i><span>24/7 prioritātes atbalsts</span></li>
                         <li><i class="fa-solid fa-check"></i><span>Padziļināta AI analītika un prognozēšana</span></li>
                     </ul>
-                    <a href="#" class="pricing-btn featured-btn">Sākt Tagad</a>
+                    <a href="#" class="pricing-btn featured-btn contact-cta-btn">Sākt Tagad</a>
                 </div>
                 
                 <div class="pricing-card">
@@ -695,10 +698,6 @@
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Tālrunis</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
                         <label for="message">Ziņa</label>
                         <textarea id="message" name="message" rows="4"></textarea>
                     </div>
@@ -793,6 +792,6 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <script src="js/main.js?v=1.0.9"></script></script>
+    <script src="js/main.js?v=1.1.1"></script>
 </body>
 </html>
