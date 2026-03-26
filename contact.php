@@ -10,7 +10,8 @@ use PHPMailer\PHPMailer\Exception;
 $name = isset($_POST['name']) ? trim($_POST['name']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
-$message = isset($_POST['message']) ? trim($_POST['message']) : '';
+$company_name = isset($_POST['company_name']) ? trim($_POST['company_name']) : '';
+$company_description = isset($_POST['company_description']) ? trim($_POST['company_description']) : '';
 
 $referer = $_SERVER['HTTP_REFERER'] ?? '';
 $isEnglish = (strpos($referer, '/en.html') !== false) || (strpos($referer, '/en?') !== false);
@@ -34,7 +35,7 @@ $messages = [
 
 $lang = $isEnglish ? 'en' : 'lv';
 
-if (empty($name) || empty($email)) {
+if (empty($name) || empty($email) || empty($company_name) || empty($company_description)) {
     echo json_encode(['success' => false, 'message' => $messages[$lang]['required']]);
     exit;
 }
@@ -54,9 +55,10 @@ $subject = $isEnglish ? 'New message from WIP.LV website - ' . $name : 'Jauna zi
 
 $email_content = $isEnglish ? "New message from contact form:\n\n" : "Jauna ziņa no kontaktformas:\n\n";
 $email_content .= ($isEnglish ? "Name: " : "Vārds: ") . $name . "\n";
+$email_content .= ($isEnglish ? "Company Name: " : "Uzņēmuma nosaukums: ") . $company_name . "\n";
 $email_content .= ($isEnglish ? "Email: " : "E-pasts: ") . $email . "\n";
 $email_content .= ($isEnglish ? "Phone: " : "Tālrunis: ") . ($phone ? $phone : ($isEnglish ? 'Not specified' : 'Nav norādīts')) . "\n";
-$email_content .= ($isEnglish ? "Message: " : "Ziņa: ") . $message . "\n";
+$email_content .= ($isEnglish ? "Company Description: " : "Uzņēmuma darbības apraksts: ") . $company_description . "\n";
 $email_content .= "\n---\n";
 $email_content .= ($isEnglish ? "Sent from: " : "Nosūtīts no: ") . ($_SERVER['HTTP_REFERER'] ?? 'Unknown') . "\n";
 $email_content .= "IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'Unknown') . "\n";
