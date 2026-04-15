@@ -927,7 +927,7 @@ nav a:not(.header-cta).active::after {
 /* CTA SECTION */
 .cta-section {
     padding: 0;
-    background: var(--bg-light);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-light) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1062,7 +1062,7 @@ nav a:not(.header-cta).active::after {
 
 /* CONTACTS */
 .contacts-section {
-    background: var(--bg-card);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-light) 100%);
     padding: 100px 0;
     position: relative;
 }
