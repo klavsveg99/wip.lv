@@ -1127,7 +1127,7 @@ nav a:not(.header-cta).active::after {
 }
 
 .contact-card p {
-    font-size: 16px;
+    font-size: 20px;
     color: var(--text);
     margin-bottom: 4px;
 }
