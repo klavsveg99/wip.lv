@@ -1062,21 +1062,13 @@ nav a:not(.header-cta).active::after {
 
 /* CONTACTS */
 .contacts-section {
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-light) 100%);
+    background: var(--bg-light);
     padding: 100px 0;
     position: relative;
 }
 
 .contacts-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-    pointer-events: none;
+    display: none;
 }
 
 .contacts-section .section-title {
