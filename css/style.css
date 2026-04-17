@@ -352,6 +352,11 @@ nav a:not(.header-cta).active::after {
     color: var(--text-muted2);
     border-right: 1px solid var(--border);
     transition: all 0.2s;
+    width: 44px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lang-switch a:last-child {
