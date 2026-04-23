@@ -649,8 +649,18 @@ nav a:not(.header-cta).active::after {
 .split-grid-2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 80px;
     align-items: center;
+}
+
+@media (min-width: 1025px) {
+    .split-grid-2col {
+        direction: rtl;
+    }
+    
+    .split-grid-2col > * {
+        direction: ltr;
+    }
 }
 
 .split-content {
