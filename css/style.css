@@ -642,6 +642,51 @@ nav a:not(.header-cta).active::after {
     gap: 20px;
 }
 
+.section-alt {
+    background: var(--bg-light);
+}
+
+.split-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.split-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.split-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text);
+    font-size: 16px;
+}
+
+.feature-list li i {
+    color: var(--accent);
+    font-size: 18px;
+    width: 24px;
+}
+
 /* SERVICES GRID */
 .services-grid {
     display: grid;
@@ -2326,6 +2371,23 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
+    .split-grid-2col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .graph-container svg text {
+        font-size: 13px !important;
+    }
+    
+    .graph-container h4 {
+        font-size: 1.1rem;
+    }
+    
+    .graph-container svg {
+        min-height: 220px;
+    }
+    
     .services-grid,
     .benefits-grid,
     .tech-grid,
@@ -2656,5 +2718,13 @@ footer {
     
     .contact-popup {
         width: 100%;
+    }
+    
+    .graph-container svg text {
+        font-size: 20px !important;
+    }
+    
+    .graph-container {
+        padding: 52px 1rem 2.5rem !important;
     }
 }
