@@ -4,8 +4,8 @@
   "description": "AI Automatizācija biznesa procesu optimizācijai",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "images/favicon-192.png",

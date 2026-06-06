@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
-    --bg: #0a0e17;
-    --bg-light: #111827;
-    --bg-card: #1a2332;
-    --text: #f1f5f9;
-    --text-muted: #94a3b8;
-    --text-muted2: #64748b;
-    --accent: #06b6d4;
-    --accent-light: #22d3ee;
-    --accent-dark: #0891b2;
-    --accent-glow: rgba(6, 182, 212, 0.3);
-    --border: #2d3748;
-    --accent-secondary: #3b82f6;
-    --gradient-start: #06b6d4;
-    --gradient-end: #8b5cf6;
+    --bg: #ffffff;
+    --bg-light: #f5f5f5;
+    --bg-card: #ffffff;
+    --text: #111111;
+    --text-muted: #666666;
+    --text-muted2: #999999;
+    --accent: #000000;
+    --accent-light: #333333;
+    --accent-dark: #000000;
+    --accent-glow: transparent;
+    --border: #e0e0e0;
+    --border-dark: #000000;
+    --accent-secondary: #000000;
+    --text-secondary: #666666;
 }
 
 * {
@@ -80,8 +80,8 @@ body {
 }
 
 @keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px var(--accent-glow); }
-    50% { box-shadow: 0 0 40px var(--accent-glow), 0 0 60px var(--accent-glow); }
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); }
+    50% { box-shadow: 0 0 40px rgba(0, 0, 0, 0.05), 0 0 60px rgba(0, 0, 0, 0.05); }
 }
 
 header {
@@ -199,7 +199,7 @@ header.sticky .header-inner {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(45deg, transparent, rgba(0,0,0,0.03), transparent);
     transform: rotate(45deg);
     animation: shimmer 3s infinite;
 }
@@ -259,7 +259,7 @@ nav a:not(.header-cta).active::after {
 
 .header-cta {
     padding: 10px 20px !important;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+    background: #000000 !important;
     color: white !important;
     font-weight: 600 !important;
     font-size: 12px !important;
@@ -322,7 +322,7 @@ nav a:not(.header-cta).active::after {
 
 .header-cta {
     padding: 10px 20px !important;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+    background: #000000 !important;
     color: white !important;
     font-weight: 600 !important;
     font-size: 12px !important;
@@ -387,8 +387,7 @@ nav a:not(.header-cta).active::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(ellipse at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+    background: none;
     pointer-events: none;
 }
 
@@ -416,10 +415,10 @@ nav a:not(.header-cta).active::after {
     gap: 8px;
     width: fit-content;
     padding: 10px 16px;
-    background: rgba(6, 182, 212, 0.1);
-    border: 1px solid rgba(6, 182, 212, 0.3);
+    background: #f5f5f5;
+    border: 1px solid var(--border);
     border-radius: 20px;
-    color: var(--accent);
+    color: var(--text);
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -474,13 +473,13 @@ nav a:not(.header-cta).active::after {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    background: #000000;
     color: var(--bg);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 20px 40px var(--accent-glow);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary {
@@ -492,7 +491,7 @@ nav a:not(.header-cta).active::after {
 .btn-secondary:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(6, 182, 212, 0.05);
+    background: #f5f5f5;
 }
 
 .btn i {
@@ -554,8 +553,8 @@ nav a:not(.header-cta).active::after {
 }
 
 .metric-card {
-    background: linear-gradient(135deg, rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.3));
-    border: 1px solid rgba(6, 182, 212, 0.2);
+    background: #ffffff;
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
     display: flex;
@@ -566,13 +565,13 @@ nav a:not(.header-cta).active::after {
 
 .metric-card:hover {
     border-color: var(--accent);
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.05));
+    background: #fafafa;
     transform: translateY(-4px);
 }
 
 .metric-card.primary {
     border-color: var(--accent);
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.1));
+    background: #fafafa;
 }
 
 .metric-icon {
@@ -584,7 +583,7 @@ nav a:not(.header-cta).active::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(6, 182, 212, 0.1);
+    background: transparent;
     border-radius: 10px;
 }
 
@@ -739,7 +738,7 @@ nav a:not(.header-cta).active::after {
 .service-icon {
     width: 64px;
     height: 64px;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+    background: #f0f0f0;
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -789,7 +788,7 @@ nav a:not(.header-cta).active::after {
 .portfolio-card:hover {
     transform: translateY(-8px);
     border-color: var(--accent);
-    box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .portfolio-image {
@@ -817,8 +816,7 @@ nav a:not(.header-cta).active::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(6, 182, 212, 0.1);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.03);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -831,7 +829,7 @@ nav a:not(.header-cta).active::after {
 }
 
 .portfolio-link-btn {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    background: #000000;
     color: var(--bg);
     padding: 12px 24px;
     border-radius: 8px;
@@ -849,7 +847,7 @@ nav a:not(.header-cta).active::after {
 
 .portfolio-card:hover .portfolio-link-btn {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px var(--accent-glow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .portfolio-content {
@@ -909,10 +907,7 @@ nav a:not(.header-cta).active::after {
 .benefit-card i {
     font-size: 32px;
     margin-bottom: 20px;
-    background: var(--accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
     transition: all 0.3s;
 }
 
@@ -934,7 +929,7 @@ nav a:not(.header-cta).active::after {
 
 /* PROCESS */
 .process-section {
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-light) 100%);
+    background: var(--bg-light);
 }
 
 .process-grid {
@@ -961,10 +956,7 @@ nav a:not(.header-cta).active::after {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 48px;
     font-weight: 700;
-    background: var(--accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
     margin-bottom: 24px;
     line-height: 1;
 }
@@ -986,7 +978,7 @@ nav a:not(.header-cta).active::after {
 /* CTA SECTION */
 .cta-section {
     padding: 0;
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-light) 100%);
+    background: var(--bg-light);
     position: relative;
     overflow: hidden;
 }
@@ -998,8 +990,7 @@ nav a:not(.header-cta).active::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+    background: none;
     pointer-events: none;
 }
 
@@ -1061,7 +1052,7 @@ nav a:not(.header-cta).active::after {
 .tech-item:hover {
     border-color: var(--accent);
     transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(6, 182, 212, 0.1);
+    box-shadow: 0 12px 24px transparent;
 }
 
 .tech-item i {
@@ -1088,7 +1079,7 @@ nav a:not(.header-cta).active::after {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(-8px);
-    background: rgba(6, 182, 212, 0.95);
+    background: #333333;
     color: white;
     padding: 8px 12px;
     border-radius: 6px;
@@ -1158,15 +1149,15 @@ nav a:not(.header-cta).active::after {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    border: 1px solid rgba(6, 182, 212, 0.15);
+    border: 1px solid var(--border);
     border-radius: 16px;
 }
 
 .contact-card:hover {
     background: var(--bg-light);
     transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(6, 182, 212, 0.15);
-    border-color: rgba(6, 182, 212, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    border-color: var(--accent);
 }
 
 .contact-icon {
@@ -1449,7 +1440,7 @@ footer {
 
 .popup-form button {
     padding: 18px 32px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    background: #000000;
     color: white;
     border: none;
     font-weight: 600;
@@ -1464,7 +1455,7 @@ footer {
 
 .popup-form button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px var(--accent-glow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .form-message {
@@ -1476,16 +1467,16 @@ footer {
 
 .form-message.success {
     display: block;
-    background: rgba(6, 182, 212, 0.1);
-    color: var(--accent);
-    border: 1px solid rgba(6, 182, 212, 0.3);
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
 }
 
 .form-message.error {
     display: block;
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: #f5f5f5;
+    color: #000000;
+    border: 1px solid #000000;
 }
 
 .popup-contact-info {
@@ -1505,7 +1496,7 @@ footer {
     align-items: center;
     gap: 12px;
     padding: 12px 16px;
-    background: rgba(17, 24, 39, 0.5);
+    background: #f5f5f5;
     border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--text);
@@ -1536,7 +1527,7 @@ footer {
 }
 
 .testimonial-card {
-    background: linear-gradient(135deg, rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.4));
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 32px 24px;
@@ -1552,7 +1543,7 @@ footer {
 .testimonial-card:hover {
     border-color: var(--accent);
     transform: translateY(-8px);
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.05));
+    background: #fafafa;
 }
 
 .testimonial-header {
@@ -1571,10 +1562,7 @@ footer {
 }
 
 .testimonial-metric {
-    background: var(--accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
     font-weight: 700;
     font-size: 14px;
     white-space: nowrap;
@@ -1614,7 +1602,7 @@ footer {
 }
 
 .pricing-card {
-    background: linear-gradient(135deg, rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.4));
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 32px 24px;
@@ -1628,7 +1616,7 @@ footer {
 
 .pricing-card.featured {
     border-color: var(--accent);
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.1));
+    background: #fafafa;
     transform: scale(1.05);
 }
 
@@ -1682,10 +1670,7 @@ footer {
 .price {
     font-size: 42px;
     font-weight: 700;
-    background: var(--accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
 }
 
 .period {
@@ -1740,13 +1725,13 @@ footer {
 }
 
 .pricing-btn.featured-btn {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    background: #000000;
     border-color: var(--accent);
     color: var(--bg);
 }
 
 .pricing-btn.featured-btn:hover {
-    box-shadow: 0 10px 30px var(--accent-glow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* FAQ SECTION */
@@ -1774,13 +1759,13 @@ footer {
 
 .faq-item:hover {
     border-color: var(--accent);
-    background: rgba(6, 182, 212, 0.05);
+    background: #fafafa;
 }
 
 .faq-question {
     width: 100%;
     padding: 24px;
-    background: linear-gradient(135deg, rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.4));
+    background: #ffffff;
     border: none;
     color: var(--text);
     font-size: 16px;
@@ -1794,7 +1779,7 @@ footer {
 }
 
 .faq-question:hover {
-    background: rgba(6, 182, 212, 0.1);
+    background: #f5f5f5;
 }
 
 .faq-question i {
@@ -1812,7 +1797,7 @@ footer {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.2s ease;
-    background: rgba(6, 182, 212, 0.05);
+    background: #fafafa;
     opacity: 0;
 }
 
@@ -1866,7 +1851,7 @@ footer {
     background: var(--accent);
     color: var(--bg);
     transform: translateY(-3px);
-    box-shadow: 0 5px 20px var(--accent-glow);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* COOKIE CONSENT */
@@ -1874,7 +1859,7 @@ footer {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    background: linear-gradient(135deg, rgba(10, 14, 23, 0.98), rgba(17, 24, 39, 0.95));
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px 24px;
@@ -1935,22 +1920,22 @@ footer {
 }
 
 .cookie-btn.reject {
-    border-color: #ef4444;
-    color: #ef4444;
+    border-color: var(--accent);
+    color: var(--text);
 }
 
 .cookie-btn.reject:hover {
-    background: rgba(239, 68, 68, 0.1);
+    background: #f5f5f5;
 }
 
 .cookie-btn.accept-all {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    background: #000000;
     border-color: var(--accent);
     color: var(--bg);
 }
 
 .cookie-btn.accept-all:hover {
-    box-shadow: 0 10px 30px var(--accent-glow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .cookie-btn.customize {
@@ -1959,7 +1944,7 @@ footer {
 }
 
 .cookie-btn.customize:hover {
-    background: rgba(6, 182, 212, 0.1);
+    background: #f5f5f5;
 }
 
 /* COOKIE MODAL */
@@ -1991,7 +1976,7 @@ footer {
 }
 
 .cookie-modal-content {
-    background: linear-gradient(135deg, var(--bg), rgba(17, 24, 39, 0.8));
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 40px;
@@ -2103,7 +2088,7 @@ footer {
 }
 
 .category-badge {
-    background: rgba(6, 182, 212, 0.1);
+    background: transparent;
     color: var(--accent);
     padding: 4px 12px;
     border-radius: 20px;
@@ -2114,8 +2099,8 @@ footer {
 }
 
 .category-badge.required {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
+    background: #f0f0f0;
+    color: #000000;
 }
 
 .category-description {
@@ -2136,13 +2121,13 @@ footer {
 
 .cookie-btn.save {
     flex: 1;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    background: #000000;
     border-color: var(--accent);
     color: var(--bg);
 }
 
 .cookie-btn.save:hover {
-    box-shadow: 0 10px 30px var(--accent-glow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .cookie-modal-actions .cookie-btn.reject {
@@ -2167,7 +2152,7 @@ footer {
 }
 
 .cookie-legal a:hover {
-    color: var(--accent-bright);
+    color: var(--accent);
     text-decoration: underline;
 }
 
@@ -2196,7 +2181,7 @@ footer {
 }
 
 .footer-policies a:hover {
-    color: var(--accent-bright);
+    color: var(--accent);
     text-decoration: underline;
 }
 
