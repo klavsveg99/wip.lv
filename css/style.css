@@ -537,9 +537,9 @@ nav a:not(.header-cta).active::after {
     justify-content: center;
     font-weight: 700;
     font-size: 14px;
-    border: 2px solid var(--bg);
     margin-left: -8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    will-change: transform;
 }
 
 .avatar:first-child {
