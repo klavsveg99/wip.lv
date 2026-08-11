@@ -534,6 +534,7 @@ nav a:not(.header-cta).active::after {
     border-radius: 50%;
     border: 2px solid var(--bg);
     margin-left: -8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .avatar:first-child {
