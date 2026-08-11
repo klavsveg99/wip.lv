@@ -1,23 +1,34 @@
 let lastScroll = 0;
 const header = document.querySelector('header');
 
-window.addEventListener('scroll', () => {
+// rAF-THROTTLED, PASSIVE SCROLL (fixes choppy scroll jank)
+let scrollTicking = false;
+function onScrollFrame() {
+    scrollTicking = false;
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll > 100) {
-        if (currentScroll > lastScroll) {
+        if (currentScroll > lastScroll + 2) {
             header.classList.add('hidden');
             header.classList.remove('sticky');
-        } else {
+        } else if (currentScroll < lastScroll - 2) {
             header.classList.remove('hidden');
             header.classList.add('sticky');
         }
     } else {
         header.classList.remove('sticky', 'hidden');
     }
-    
     lastScroll = currentScroll;
-});
+
+    updateBackToTopVisibility();
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(onScrollFrame);
+    }
+}, { passive: true });
 
 // GOOGLE ANALYTICS & CONSENT MODE
 window.dataLayer = window.dataLayer || [];
@@ -228,10 +239,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (ctaButtons) {
         ctaButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                openPopup();
-            });
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openPopup();
+        });
         });
     }
     
@@ -348,16 +359,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // BACK TO TOP
-    window.addEventListener('scroll', () => {
-        if (backToTop) {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
-            }
-        }
-    });
-    
     if (backToTop) {
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -417,9 +418,3 @@ function updateBackToTopVisibility() {
         }
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    window.addEventListener('scroll', updateBackToTopVisibility);
-    const backToTopBtn = document.getElementById('backToTop');
-    if (backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-});
