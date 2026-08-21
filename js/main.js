@@ -43,16 +43,22 @@ gtag('consent', 'default', {
     'wait_for_update': 500
 });
 
-// Load Google Analytics
-(function() {
+const GA_MEASUREMENT_ID = 'G-4RZF44QNDM';
+let gaLoaded = false;
+
+function loadGoogleAnalytics() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-4RZF44QNDM';
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    script.onload = function() {
+        gtag('js', new Date());
+        gtag('config', GA_MEASUREMENT_ID, { send_page_view: false });
+    };
     document.head.appendChild(script);
-})();
-
-gtag('js', new Date());
-gtag('config', 'G-4RZF44QNDM', { 'send_page_view': false });
+}
 
 const COOKIE_CONSENT_KEY = 'wip_cookie_consent';
 const COOKIE_PREFERENCES_KEY = 'wip_cookie_preferences';
@@ -190,17 +196,17 @@ class CookieConsent {
     }
     
     updateGoogleConsent(consent) {
+        if (consent.analytics) {
+            loadGoogleAnalytics();
+        }
         gtag('consent', 'update', {
             'analytics_storage': consent.analytics ? 'granted' : 'denied',
             'ad_storage': consent.marketing ? 'granted' : 'denied',
             'ad_user_data': consent.marketing ? 'granted' : 'denied',
-            'ad_personalization': consent.marketing ? 'granted' : 'denied',
-            'page_view': consent.analytics ? 'granted' : 'denied'
+            'ad_personalization': consent.marketing ? 'granted' : 'denied'
         });
-        
-        // Send page view if analytics consent was just granted
-        if (consent.analytics) {
-            gtag('config', 'G-4RZF44QNDM', { 'send_page_view': true });
+        if (consent.analytics && gaLoaded) {
+            gtag('event', 'page_view');
         }
     }
     
