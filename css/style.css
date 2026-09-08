@@ -93,26 +93,26 @@ header {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
-.section,
-.features-grid,
-.services-grid,
-.benefits-grid,
-.process-grid,
-.contacts-grid,
-.stat-item,
-.feature-card,
-.service-card,
-.benefit-card,
-.process-card,
-.contact-card,
-.hours-card {
-    animation: fadeInUp 0.4s ease-out forwards;
+/* SCROLL REVEAL — CSS transitions toggled via .is-visible (see main.js).
+   Hidden state only applies when JS is available (html.js), so content
+   is never stuck invisible without JS. */
+html.js .reveal {
     opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-footer {
-    animation: fadeIn 0.4s ease-out forwards;
-    opacity: 0;
+html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 h1, h2, h3, h4 {

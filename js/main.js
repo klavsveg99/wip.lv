@@ -372,17 +372,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ANIMATIONS
-const animatedElements = document.querySelectorAll('.section, footer, .cta-section, .services-grid, .benefits-grid, .process-grid, .contacts-grid, .stat-item, .service-card, .benefit-card, .process-card, .contact-card, .hours-card, .tech-grid, .cta-box');
-const observer = new IntersectionObserver((entries) => {
+// SCROLL REVEAL — adds .reveal to blocks and .is-visible when they enter
+// the viewport (CSS handles the actual transition; no paused animations)
+document.documentElement.classList.add('js');
+
+const revealSelector = '.section, footer, .cta-section, .features-grid, .services-grid, .benefits-grid, .process-grid, .contacts-grid, .tech-grid, .stat-item, .feature-card, .service-card, .benefit-card, .process-card, .contact-card, .hours-card, .cta-box';
+const revealObserver = new IntersectionObserver((entries) => {
+    let delay = 0;
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-            entry.target.style.opacity = '1';
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        if (delay > 0) {
+            el.style.transitionDelay = delay + 'ms';
+            el.addEventListener('transitionend', () => { el.style.transitionDelay = ''; }, { once: true });
         }
+        el.classList.add('is-visible');
+        revealObserver.unobserve(el);
+        delay = Math.min(delay + 70, 350);
     });
-}, { threshold: 0.1 });
-animatedElements.forEach(el => { el.style.animationPlayState = 'paused'; observer.observe(el); });
+}, { rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll(revealSelector).forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+});
 
 // TECH TOOLTIPS
 const techItems = document.querySelectorAll('.tech-item');
