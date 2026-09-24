@@ -44,7 +44,18 @@ gtag('consent', 'default', {
 });
 
 const GA_MEASUREMENT_ID = 'G-4RZF44QNDM';
+const GOOGLE_ADS_ID = 'AW-17661436144';
+const ADS_CONVERSIONS = {
+    form: 'iQZXCMGznYQdEPDB0OVB',
+    call: 'XQWSCMSznYQdEPDB0OVB',
+    email: 'xyzRCMeznYQdEPDB0OVB'
+};
 let gaLoaded = false;
+
+function trackAdsConversion(type) {
+    const label = ADS_CONVERSIONS[type];
+    if (label) gtag('event', 'conversion', { send_to: GOOGLE_ADS_ID + '/' + label });
+}
 
 function loadGoogleAnalytics() {
     if (gaLoaded) return;
@@ -56,6 +67,7 @@ function loadGoogleAnalytics() {
     script.onload = function() {
         gtag('js', new Date());
         gtag('config', GA_MEASUREMENT_ID, { send_page_view: false });
+        gtag('config', GOOGLE_ADS_ID);
     };
     document.head.appendChild(script);
 }
@@ -334,6 +346,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 formMessage.textContent = result.message;
                 formMessage.className = 'form-message ' + (result.success ? 'success' : 'error');
                 if (result.success) {
+                    gtag('event', 'form_submission', {
+                        event_category: 'contact',
+                        event_label: window.location.pathname
+                    });
+                    gtag('event', 'generate_lead');
+                    gtag('event', 'conversion_event_submit_lead_form');
+                    trackAdsConversion('form');
                     const formFields = contactForm.querySelector('.form-fields');
                     if (formFields) formFields.style.display = 'none';
                 }
@@ -437,3 +456,18 @@ function updateBackToTopVisibility() {
         }
     }
 }
+
+// CALL AND EMAIL CLICK TRACKING
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', () => {
+        gtag('event', 'click_to_call');
+        trackAdsConversion('call');
+    });
+});
+
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', () => {
+        gtag('event', 'email_click');
+        trackAdsConversion('email');
+    });
+});
