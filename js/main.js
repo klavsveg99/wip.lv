@@ -57,6 +57,46 @@ function trackAdsConversion(type) {
     if (label) gtag('event', 'conversion', { send_to: GOOGLE_ADS_ID + '/' + label });
 }
 
+// reCAPTCHA Enterprise (score based). The site key is public; the secret
+// key lives only on the server (private/config.php).
+const RECAPTCHA_SITE_KEY = '6LctVdgtAAAAAPZOep17km6IIiTumxmN9n0AOy8r';
+const RECAPTCHA_ACTION = 'contact_form';
+let recaptchaScriptPromise = null;
+
+function loadRecaptcha() {
+    if (window.grecaptcha && window.grecaptcha.enterprise) {
+        return Promise.resolve();
+    }
+    if (!recaptchaScriptPromise) {
+        recaptchaScriptPromise = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://www.google.com/recaptcha/enterprise.js?render=' + RECAPTCHA_SITE_KEY;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+    }
+    return recaptchaScriptPromise;
+}
+
+function getRecaptchaToken() {
+    return loadRecaptcha().then(() => new Promise((resolve, reject) => {
+        if (!window.grecaptcha || !window.grecaptcha.enterprise) {
+            reject(new Error('reCAPTCHA unavailable'));
+            return;
+        }
+        window.grecaptcha.enterprise.ready(() => {
+            window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: RECAPTCHA_ACTION })
+                .then(resolve)
+                .catch(reject);
+        });
+    }));
+}
+
+// Load early so reCAPTCHA can observe the session before the form is used.
+loadRecaptcha().catch(() => {});
+
 function loadGoogleAnalytics() {
     if (gaLoaded) return;
     gaLoaded = true;
@@ -317,7 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
         network: isEnglish ? 'Error sending message. Please try again or contact us by email.' : 'Kļūda nosūtot ziņojumu. Lūdzu, mēģiniet vēlreiz vai sazinieties ar mums pa e-pastu.',
         required: isEnglish ? 'Please fill in all required fields.' : 'Lūdzu, aizpildiet visus obligātos laukus.',
         invalidEmail: isEnglish ? 'Please enter a valid email address.' : 'Lūdzu, ievadiet derīgu e-pasta adresi.',
-        invalidPhone: isEnglish ? 'Phone number can only contain numbers and + sign.' : 'Tālruņa numurs var saturēt tikai ciparus un + zīmi.'
+        invalidPhone: isEnglish ? 'Phone number can only contain numbers and + sign.' : 'Tālruņa numurs var saturēt tikai ciparus un + zīmi.',
+        captcha: isEnglish ? 'Please confirm you are not a robot and try again.' : 'Lūdzu, apstipriniet, ka neesat robots, un mēģiniet vēlreiz.'
     };
     
     if (contactForm) {
@@ -339,6 +380,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalBtnText = submitBtn.textContent;
             submitBtn.textContent = isEnglish ? 'Sending...' : 'Nosūta...';
             submitBtn.disabled = true;
+            
+            try {
+                formData.append('recaptchaToken', await getRecaptchaToken());
+            } catch (error) {
+                formMessage.textContent = errorMessages.captcha;
+                formMessage.className = 'form-message error';
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
             
             try {
                 const response = await fetch('contact.php', { method: 'POST', body: formData });

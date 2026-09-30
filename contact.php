@@ -7,6 +7,40 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+// reCAPTCHA Enterprise token verification (legacy siteverify endpoint).
+function verify_recaptcha($secret, $token, $action, $remoteip) {
+    if (empty($secret) || empty($token)) {
+        return false;
+    }
+    $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => http_build_query([
+            'secret' => $secret,
+            'response' => $token,
+            'remoteip' => $remoteip,
+        ]),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 5,
+    ]);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    if ($response === false) {
+        return false;
+    }
+    $result = json_decode($response, true);
+    if (empty($result['success'])) {
+        return false;
+    }
+    if (isset($result['action']) && $result['action'] !== $action) {
+        return false;
+    }
+    if (isset($result['score']) && $result['score'] < 0.5) {
+        return false;
+    }
+    return true;
+}
+
 // SMTP configuration
 $cfg = require __DIR__ . '/../private/config.php';
 $smtpHost = $cfg['smtpHost'];
@@ -28,6 +62,7 @@ $messages = [
         'required' => 'Lūdzu, aizpildiet visus obligātos laukus.',
         'invalid_email' => 'Lūdzu, ievadiet derīgu e-pasta adresi.',
         'invalid_phone' => 'Tālruņa numurs var saturēt tikai ciparus un + zīmi.',
+        'captcha' => 'Lūdzu, apstipriniet, ka neesat robots, un mēģiniet vēlreiz.',
         'success' => 'Paldies! Jūsu ziņa ir nosūtīta. Mēs sazināsimies ar jums drīzumā.',
         'error' => 'Kļūda nosūtot ziņojumu. Lūdzu, mēģiniet vēlreiz vai sazinieties ar mums pa e-pastu.'
     ],
@@ -35,6 +70,7 @@ $messages = [
         'required' => 'Please fill in all required fields.',
         'invalid_email' => 'Please enter a valid email address.',
         'invalid_phone' => 'Phone number can only contain numbers and + sign.',
+        'captcha' => 'Please confirm you are not a robot and try again.',
         'success' => 'Thank you! Your message has been sent. We will contact you soon.',
         'error' => 'Error sending message. Please try again or contact us by email.'
     ]
@@ -54,6 +90,13 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 if (!empty($phone) && !preg_match('/^[0-9+]+$/', $phone)) {
     echo json_encode(['success' => false, 'message' => $messages[$lang]['invalid_phone']]);
+    exit;
+}
+
+$recaptchaSecret = $cfg['recaptchaSecret'] ?? '';
+$recaptchaToken = isset($_POST['recaptchaToken']) ? trim($_POST['recaptchaToken']) : '';
+if (!verify_recaptcha($recaptchaSecret, $recaptchaToken, 'contact_form', $_SERVER['REMOTE_ADDR'] ?? '')) {
+    echo json_encode(['success' => false, 'message' => $messages[$lang]['captcha']]);
     exit;
 }
 
