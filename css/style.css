@@ -540,42 +540,6 @@ nav a:not(.header-cta).active::after {
     margin-left: 0;
 }
 
-.hero-metrics {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-}
-
-.metric-row {
-    border-top: 1px solid var(--border);
-    padding: 20px 0;
-}
-
-.metric-row:first-child {
-    border-top: none;
-    padding-top: 0;
-}
-
-.metric-row:last-child {
-    padding-bottom: 0;
-}
-
-.metric-name {
-    font-family: 'Outfit', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.2;
-    margin-bottom: 6px;
-}
-
-.metric-desc {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    margin: 0;
-}
-
 /* SECTIONS */
 .section {
     padding: 100px 0;
@@ -2508,19 +2472,6 @@ footer {
     .proof-text {
         font-size: 12px;
         width: 100%;
-    }
-    
-    .hero-metrics {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    
-    .metric-row {
-        padding: 18px 0;
-    }
-    
-    .metric-desc {
-        font-size: 13px;
     }
     
     .process-grid {
