@@ -395,9 +395,9 @@ nav a:not(.header-cta).active::after {
     margin: 0 auto;
     padding: 0 24px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 56px;
+    align-items: start;
     position: relative;
     z-index: 1;
 }
