@@ -2407,15 +2407,6 @@ footer {
         width: 100%;
     }
     
-    .hero-metrics {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0 24px;
-    }
-    
-    .metric-card:nth-child(2) {
-        border-top: none;
-    }
-    
     .section {
         padding: 60px 0;
     }
@@ -2458,7 +2449,6 @@ footer {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .hero-metrics,
     .services-grid,
     .benefits-grid,
     .process-grid,
@@ -2528,22 +2518,15 @@ footer {
         gap: 0;
     }
     
-    .metric-card {
-        padding: 26px 0;
+    .metric-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        align-items: start;
+        padding: 18px 0;
     }
     
-    .metric-icon {
-        width: 24px;
-        font-size: 20px;
-    }
-    
-    .metric-value {
-        font-size: 22px;
-    }
-    
-    .metric-label,
     .metric-desc {
-        font-size: 12px;
+        font-size: 13px;
     }
     
     .process-grid {
