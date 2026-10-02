@@ -551,7 +551,7 @@ nav a:not(.header-cta).active::after {
     border: none;
     border-top: 1px solid var(--border);
     border-radius: 0;
-    padding: 22px 0;
+    padding: 32px 0;
     display: flex;
     gap: 16px;
     align-items: flex-start;
@@ -978,7 +978,7 @@ nav a:not(.header-cta).active::after {
 
 .cta-box {
     background: transparent;
-    padding: 120px 60px;
+    padding: 170px 60px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -2484,7 +2484,7 @@ footer {
     }
     
     .cta-box {
-        padding: 80px 24px;
+        padding: 110px 24px;
     }
     
     .hero h1 {
@@ -2564,7 +2564,7 @@ footer {
     }
     
     .metric-card {
-        padding: 20px 0;
+        padding: 26px 0;
     }
     
     .metric-icon {
