@@ -547,12 +547,8 @@ nav a:not(.header-cta).active::after {
 }
 
 .metric-row {
-    display: grid;
-    grid-template-columns: minmax(110px, 0.75fr) 1.25fr;
-    gap: 28px;
-    align-items: baseline;
     border-top: 1px solid var(--border);
-    padding: 22px 0;
+    padding: 20px 0;
 }
 
 .metric-row:first-child {
@@ -570,6 +566,7 @@ nav a:not(.header-cta).active::after {
     font-weight: 600;
     color: var(--text);
     line-height: 1.2;
+    margin-bottom: 6px;
 }
 
 .metric-desc {
@@ -2519,9 +2516,6 @@ footer {
     }
     
     .metric-row {
-        grid-template-columns: 1fr;
-        gap: 4px;
-        align-items: start;
         padding: 18px 0;
     }
     
