@@ -406,6 +406,7 @@ nav a:not(.header-cta).active::after {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    max-width: 70%;
 }
 
 .hero-badge {
@@ -2343,6 +2344,10 @@ footer {
     .hero-container {
         grid-template-columns: 1fr;
         gap: 60px;
+    }
+    
+    .hero-content {
+        max-width: 100%;
     }
     
     .hero h1 {
