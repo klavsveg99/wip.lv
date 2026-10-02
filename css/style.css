@@ -557,6 +557,10 @@ nav a:not(.header-cta).active::after {
     align-items: flex-start;
 }
 
+.metric-card:first-child {
+    border-top: none;
+}
+
 .metric-card:hover {
     border-color: var(--border);
     background: transparent;
@@ -777,6 +781,7 @@ nav a:not(.header-cta).active::after {
     height: 240px;
     overflow: hidden;
     background: var(--bg-light);
+    border: 1px solid var(--border);
 }
 
 .portfolio-image img {
@@ -1125,7 +1130,7 @@ nav a:not(.header-cta).active::after {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 0;
     border: none;
     border-top: 1px solid var(--border);
     border-radius: 0;
@@ -1141,7 +1146,7 @@ nav a:not(.header-cta).active::after {
 .contact-icon {
     font-size: 24px;
     color: var(--accent);
-    margin-bottom: 4px;
+    margin-bottom: 14px;
 }
 
 .contact-card h4 {
@@ -1150,14 +1155,23 @@ nav a:not(.header-cta).active::after {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-muted);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     font-weight: 500;
 }
 
 .contact-card p {
     font-size: 20px;
     color: var(--text);
-    margin-bottom: 4px;
+    margin-bottom: 0;
+}
+
+.contact-card p + p {
+    margin-top: 6px;
+}
+
+.contact-card p small {
+    font-size: 14px;
+    color: var(--text-muted);
 }
 
 .contact-card p a {
@@ -2431,6 +2445,10 @@ footer {
     .hero-metrics {
         grid-template-columns: repeat(2, 1fr);
         gap: 0 24px;
+    }
+    
+    .metric-card:nth-child(2) {
+        border-top: none;
     }
     
     .section {
