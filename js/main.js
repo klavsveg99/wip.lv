@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// SCROLL REVEAL — adds .reveal to blocks and .is-visible when they enter
+// SCROLL REVEAL - adds .reveal to blocks and .is-visible when they enter
 // the viewport (CSS handles the actual transition; no paused animations)
 document.documentElement.classList.add('js');
 

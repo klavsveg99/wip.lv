@@ -1,7 +1,7 @@
 {
-  "name": "WIP.LV - AI Automatizācija",
+  "name": "WIP.LV - Programmatūras izstrāde un interneta veikali",
   "short_name": "WIP.LV",
-  "description": "AI Automatizācija biznesa procesu optimizācijai",
+  "description": "Mājaslapu, interneta veikalu un programmatūras izstrāde, Google Ads reklāmas un AI automatizācija.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
