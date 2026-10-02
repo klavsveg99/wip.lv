@@ -546,71 +546,36 @@ nav a:not(.header-cta).active::after {
     gap: 0;
 }
 
-.metric-card {
-    background: transparent;
-    border: none;
+.metric-row {
+    display: grid;
+    grid-template-columns: minmax(110px, 0.75fr) 1.25fr;
+    gap: 28px;
+    align-items: baseline;
     border-top: 1px solid var(--border);
-    border-radius: 0;
-    padding: 32px 0;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
+    padding: 22px 0;
 }
 
-.metric-card:first-child {
+.metric-row:first-child {
     border-top: none;
+    padding-top: 0;
 }
 
-.metric-card:hover {
-    border-color: var(--border);
-    background: transparent;
-    transform: none;
+.metric-row:last-child {
+    padding-bottom: 0;
 }
 
-.metric-card.primary {
-    border-color: var(--border);
-    background: transparent;
-}
-
-.metric-icon {
-    font-size: 22px;
-    color: var(--accent);
-    flex-shrink: 0;
-    width: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border-radius: 0;
-    padding-top: 4px;
-}
-
-.metric-content {
-    flex-grow: 1;
-	width: 100%;
-}
-
-.metric-value {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 2px;
-    line-height: 1.1;
-}
-
-.metric-label {
-    font-size: 12px;
-    color: var(--text-secondary);
+.metric-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
+    color: var(--text);
+    line-height: 1.2;
 }
 
 .metric-desc {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.55;
     margin: 0;
 }
 
@@ -2699,4 +2664,9 @@ footer {
     .graph-container {
         padding: 52px 1rem 2.5rem !important;
     }
+}
+
+/* Hide the reCAPTCHA badge */
+.grecaptcha-badge {
+    visibility: hidden !important;
 }
