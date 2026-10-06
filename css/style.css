@@ -34,8 +34,14 @@ body {
     line-height: 1.6;
     color: var(--text);
     background: var(--bg);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='320'%3E%3Cg fill='none' stroke='%23000000' stroke-width='0.7' opacity='0.045'%3E%3Cpath d='M0,64 C150,24 450,104 600,64'/%3E%3Cpath d='M0,164 C150,204 450,124 600,164'/%3E%3Cpath d='M0,264 C150,224 450,304 600,264'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: repeat;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='320' viewBox='0 0 600 320'%3E%3Cg fill='none' stroke='%23000000' stroke-width='0.7' opacity='0.045' transform='rotate(-6 300 160)'%3E%3Cpath d='M0,60 C120,20 300,110 600,58'/%3E%3Cpath d='M0,150 C180,190 380,110 600,152'/%3E%3Cpath d='M0,250 C150,210 430,300 600,248'/%3E%3C/g%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='220' viewBox='0 0 420 220'%3E%3Cg fill='none' stroke='%23000000' stroke-width='0.65' opacity='0.05' transform='rotate(5 210 110)'%3E%3Cpath d='M0,90 C90,20 240,180 420,80'/%3E%3Cpath d='M0,150 C110,90 260,210 420,140'/%3E%3C/g%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='300' viewBox='0 0 340 300'%3E%3Cg fill='none' stroke='%23000000' stroke-width='0.7' opacity='0.042' transform='rotate(-10 170 150)'%3E%3Cpath d='M0,80 C80,10 220,150 340,60'/%3E%3Cpath d='M0,160 C100,90 240,230 340,140'/%3E%3Cpath d='M0,240 C110,180 250,300 340,220'/%3E%3C/g%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='180' viewBox='0 0 300 180'%3E%3Cg fill='none' stroke='%23000000' stroke-width='0.6' opacity='0.05' transform='rotate(8 150 90)'%3E%3Cpath d='M0,60 C70,15 200,120 300,55'/%3E%3Cpath d='M0,130 C90,85 210,170 300,125'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 4% 7%, 95% 29%, 1% 63%, 93% 94%;
+    background-size: 560px auto, 400px auto, 360px auto, 300px auto;
     font-size: 16px;
     overflow-x: hidden;
     margin: 0;
