@@ -23,7 +23,7 @@
     <meta property="og:description" content="Izstrādājam mājaslapas, interneta veikalus un pielāgotu programmatūru, pārvaldām Google Ads reklāmas un ieviešam AI automatizāciju.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wip.lv/">
-    <link rel="stylesheet" href="css/style.css?v=68">
+    <link rel="stylesheet" href="css/style.css?v=69">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
@@ -510,68 +510,189 @@
             <div class="section-header">
                 <div>
                     <h2 class="section-title">Cenas</h2>
-                    <p class="section-subtitle">Skaidri ikmēneša plāni uzturēšanai un izaugsmei. Izstrādes projektiem cenu nosakām pēc apjoma.</p>
+                    <p class="section-subtitle">Mājaslapu un veikalu cenas ir vienreizējas. Reklāmu pārvaldība ir ikmēneša pakalpojums; kampaņu izveide un reklāmas budžets tiek aprēķināti atsevišķi.</p>
                 </div>
             </div>
 
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Pamata</h3>
-                        <p class="pricing-desc">Maziem uzņēmumiem un profesionāļiem</p>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="price">€99</span>
-                        <span class="period">/mēnesī</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fa-solid fa-check"></i><span>Mājaslapas uzturēšana un atjauninājumi</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Satura un attēlu izmaiņas</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Tehniskais atbalsts pa e-pastu</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Analītikas pārskats</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>SSL un drošības uzraudzība</span></li>
-                    </ul>
-                    <a href="#" class="pricing-btn contact-cta-btn">Sākt Tagad</a>
-                </div>
+            <div class="pricing-tabs" role="tablist" aria-label="Pakalpojumu cenas">
+                <button class="pricing-tab" id="tab-websites" type="button" role="tab" aria-selected="true" aria-controls="panel-websites" tabindex="0">Mājaslapa</button>
+                <button class="pricing-tab" id="tab-stores" type="button" role="tab" aria-selected="false" aria-controls="panel-stores" tabindex="-1">Internetveikals</button>
+                <button class="pricing-tab" id="tab-ads" type="button" role="tab" aria-selected="false" aria-controls="panel-ads" tabindex="-1">Reklāmas</button>
+            </div>
 
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">POPULĀRĀKAIS</div>
-                    <div class="pricing-header">
-                        <h3>Profesionāls</h3>
-                        <p class="pricing-desc">Uzņēmumiem, kas vēlas augt</p>
+            <div class="pricing-panel" id="panel-websites" role="tabpanel" aria-labelledby="tab-websites">
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Vienkārša</h3>
+                            <p class="pricing-desc">Skaidrai uzņēmuma prezentācijai</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">€490</span>
+                            <span class="period">vienreizēji</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>Viena lapa ar līdz 5 sadaļām</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Pielāgota mobilajām ierīcēm</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Kontaktforma un kontaktinformācija</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>SEO pamati un Google Analytics</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn contact-cta-btn">Pieteikties</a>
                     </div>
-                    <div class="pricing-price">
-                        <span class="price">€499</span>
-                        <span class="period">/mēnesī</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fa-solid fa-check"></i><span>Google Ads kampaņu pārvaldība</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>SEO uzlabojumi un satura plāns</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Neierobežotas izmaiņas mājaslapā</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Prioritārs atbalsts</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Ik mēneša rezultātu atskaites</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Integrācijas ar jūsu sistēmām</span></li>
-                    </ul>
-                    <a href="#" class="pricing-btn featured-btn contact-cta-btn">Sākt Tagad</a>
-                </div>
 
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Enterprise</h3>
-                        <p class="pricing-desc">Lieliem projektiem un uzņēmumiem</p>
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Populārākā izvēle</div>
+                        <div class="pricing-header">
+                            <h3>Biznesa</h3>
+                            <p class="pricing-desc">Ikdienas darbam un klientu piesaistei</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">€890</span>
+                            <span class="period">vienreizēji</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>Līdz 6 satura lapām</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Satura pārvaldība un kontaktforma</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Pielāgots dizains un mobilā versija</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>SEO pamati un apmeklējuma uzskaite</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn featured-btn contact-cta-btn">Pieteikties</a>
                     </div>
-                    <div class="pricing-price">
-                        <span class="price">Individuāli</span>
-                        <span class="period">Sazinieties ar mums</span>
+
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Pielāgota</h3>
+                            <p class="pricing-desc">Plašākai vietnei vai īpašām vajadzībām</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">No €1 490</span>
+                            <span class="period">vienreizēji</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>Līdz 12 satura lapām</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Individuāls dizains un satura pārvaldība</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Papildu funkcijas vai integrācija</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>SEO pamati un analītikas uzstādīšana</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn contact-cta-btn">Pieteikties</a>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fa-solid fa-check"></i><span>Pielāgota programmatūra un sistēmas</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Interneta veikala izstrāde un uzturēšana</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>API un maksājumu integrācijas</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>24/7 prioritārs atbalsts</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Individuāls pakalpojumu līmenis</span></li>
-                    </ul>
-                    <a href="#" class="pricing-btn contact-cta-btn">Konsultēties</a>
+                </div>
+            </div>
+
+            <div class="pricing-panel" id="panel-stores" role="tabpanel" aria-labelledby="tab-stores" hidden>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Sākuma</h3>
+                            <p class="pricing-desc">Pirmajiem soļiem tiešsaistes tirdzniecībā</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">€1 190</span>
+                            <span class="period">vienreizēji</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>WooCommerce veikala uzstādīšana</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Līdz 30 produktu ievadīšana</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Maksājumu un piegādes pamata iestatīšana</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Mobilā versija un pasūtījumu pārbaude</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn contact-cta-btn">Pieteikties</a>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Populārākā izvēle</div>
+                        <div class="pricing-header">
+                            <h3>Biznesa</h3>
+                            <p class="pricing-desc">Pilnvērtīgam un ērti pārvaldāmam veikalam</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">€1 890</span>
+                            <span class="period">vienreizēji</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>Līdz 100 produktu ievadīšana</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Veikala izskata pielāgošana zīmolam</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Maksājumu un piegādes integrācijas</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Analītika un pasūtījumu pārbaude</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn featured-btn contact-cta-btn">Pieteikties</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Pielāgots</h3>
+                            <p class="pricing-desc">Lielākam katalogam un sarežģītākām vajadzībām</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">No €2 990</span>
+                            <span class="period">vienreizēji</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>Pielāgota veikala funkcionalitāte</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Produktu datu imports</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Ārējo sistēmu integrācijas pēc vajadzības</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Testēšana pirms veikala palaišanas</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn contact-cta-btn">Pieteikties</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-panel" id="panel-ads" role="tabpanel" aria-labelledby="tab-ads" hidden>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Pamata</h3>
+                            <p class="pricing-desc">Vienai Google Search kampaņai</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">€150</span>
+                            <span class="period">mēnesī</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>Vienas kampaņas pārvaldība</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Atslēgvārdu un meklēšanas vaicājumu pārbaude</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Reklāmu uzlabojumi un ikmēneša pārskats</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn contact-cta-btn">Pieteikties</a>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Populārākā izvēle</div>
+                        <div class="pricing-header">
+                            <h3>Izaugsmes</h3>
+                            <p class="pricing-desc">Vairākām kampaņām un regulārai optimizācijai</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">€250</span>
+                            <span class="period">mēnesī</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>Līdz 3 Google Ads kampaņām</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Ikmēneša budžeta un atslēgvārdu optimizācija</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Reklāmu variāciju pārbaude</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Ikmēneša rezultātu pārskats</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn featured-btn contact-cta-btn">Pieteikties</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>E-komercijai</h3>
+                            <p class="pricing-desc">Veikala pārdošanas kampaņām</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price">€400</span>
+                            <span class="period">mēnesī</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i><span>Līdz 5 Search vai Shopping kampaņām</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Kampaņu un produktu plūsmas uzraudzība</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Pirkumu uzskaites pārbaude</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Ikmēneša optimizācija un pārskats</span></li>
+                        </ul>
+                        <a href="#" class="pricing-btn contact-cta-btn">Pieteikties</a>
+                    </div>
                 </div>
             </div>
         </div>

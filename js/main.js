@@ -274,6 +274,37 @@ class CookieConsent {
 
 document.addEventListener('DOMContentLoaded', () => {
     new CookieConsent();
+
+    // PRICING TABS
+    const pricingTabs = Array.from(document.querySelectorAll('.pricing-tab'));
+    const pricingPanels = Array.from(document.querySelectorAll('.pricing-panel'));
+
+    function selectPricingTab(tab) {
+        pricingTabs.forEach((pricingTab) => {
+            const isSelected = pricingTab === tab;
+            pricingTab.setAttribute('aria-selected', String(isSelected));
+            pricingTab.tabIndex = isSelected ? 0 : -1;
+        });
+        pricingPanels.forEach((panel) => {
+            panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+        });
+    }
+
+    pricingTabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectPricingTab(tab));
+        tab.addEventListener('keydown', (event) => {
+            let nextIndex;
+            if (event.key === 'ArrowRight') nextIndex = (index + 1) % pricingTabs.length;
+            else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + pricingTabs.length) % pricingTabs.length;
+            else if (event.key === 'Home') nextIndex = 0;
+            else if (event.key === 'End') nextIndex = pricingTabs.length - 1;
+            else return;
+
+            event.preventDefault();
+            pricingTabs[nextIndex].focus();
+            selectPricingTab(pricingTabs[nextIndex]);
+        });
+    });
     
     // CONTACT POPUP
     const contactPopup = document.getElementById('contactPopup');

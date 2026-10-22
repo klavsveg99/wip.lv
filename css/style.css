@@ -1522,11 +1522,45 @@ footer {
 }
 
 /* PRICING SECTION */
+.pricing-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    margin: 48px 0 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.pricing-tab {
+    padding: 0 0 14px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    background: transparent;
+    color: var(--text-secondary);
+    font: inherit;
+    cursor: pointer;
+}
+
+.pricing-tab[aria-selected="true"] {
+    border-bottom-color: var(--accent);
+    color: var(--text);
+}
+
+.pricing-tab:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.pricing-panel[hidden] {
+    display: none;
+}
+
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 48px 40px;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .pricing-card {
