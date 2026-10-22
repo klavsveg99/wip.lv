@@ -1591,14 +1591,15 @@ footer {
 }
 
 .pricing-badge {
-    position: static;
+    position: absolute;
+    top: 28px;
+    left: 0;
     display: inline-block;
-    align-self: flex-start;
     background: transparent;
     color: var(--accent);
     padding: 0;
     border-radius: 0;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -1606,7 +1607,8 @@ footer {
 }
 
 .pricing-header {
-    margin-bottom: 20px;
+    min-height: 120px;
+    margin: 28px 0 20px;
 }
 
 .pricing-header h3 {
@@ -1626,7 +1628,15 @@ footer {
     row-gap: 0px;
 	column-gap: 10px;
 	flex-wrap: wrap;
-    margin-bottom: 30px;
+    min-height: 58px;
+    margin-bottom: 14px;
+}
+
+.pricing-recurring {
+    min-height: 22px;
+    margin: 0 0 14px;
+    color: var(--text-secondary);
+    font-size: 14px;
 }
 
 .price {
@@ -2557,9 +2567,25 @@ footer {
     .pricing-grid {
         grid-template-columns: 1fr;
     }
+
+    .pricing-tabs {
+        justify-content: space-evenly;
+        gap: 0;
+    }
+
+    .pricing-tab {
+        flex: 1;
+        text-align: center;
+        font-size: clamp(12px, 3.5vw, 14px);
+    }
     
     .pricing-card {
         padding: 24px 0 0;
+    }
+
+    .pricing-header {
+        min-height: 0;
+        margin-top: 28px;
     }
     
     .pricing-price {
