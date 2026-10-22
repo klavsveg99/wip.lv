@@ -1635,6 +1635,10 @@ footer {
     color: var(--accent);
 }
 
+.price-consultation {
+    font-size: clamp(24px, 2.8vw, 32px);
+}
+
 .period {
     color: var(--text-secondary);
     font-size: 14px;
