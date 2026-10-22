@@ -2435,6 +2435,10 @@ footer {
         grid-template-columns: 1fr;
     }
     
+    .contacts-section {
+        background: var(--bg);
+    }
+    
     .hours-grid {
         grid-template-columns: repeat(3, 1fr);
     }
