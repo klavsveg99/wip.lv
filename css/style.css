@@ -1589,16 +1589,23 @@ footer {
     transform: none;
 }
 
+.pricing-card:not(.featured)::before {
+    content: "";
+    display: block;
+    min-height: 20px;
+    margin-bottom: 12px;
+}
+
 .pricing-badge {
-    position: absolute;
-    top: 12px;
-    left: 16px;
+    position: static;
     display: inline-block;
+    align-self: flex-start;
     background: transparent;
     color: var(--accent);
     padding: 0;
     border-radius: 0;
-    margin-bottom: 0;
+    min-height: 20px;
+    margin-bottom: 12px;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -1606,8 +1613,8 @@ footer {
 }
 
 .pricing-header {
-    min-height: 64px;
-    margin: 14px 0 6px;
+    min-height: 60px;
+    margin: 0 0 6px;
 }
 
 .pricing-header h3 {
@@ -1654,19 +1661,19 @@ footer {
 .pricing-features {
     list-style: none;
     padding: 0;
-    grid-template-rows: repeat(4, minmax(48px, 1fr));
     margin: 12px 0 16px;
     flex-grow: 1;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
 .pricing-features li {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .pricing-features i {
@@ -2588,7 +2595,7 @@ footer {
 
     .pricing-header {
         min-height: 0;
-        margin-top: 14px;
+        margin-bottom: 6px;
     }
     
     .pricing-price {
@@ -2596,12 +2603,6 @@ footer {
         margin-bottom: 0;
     }
 
-    .pricing-features {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-    
     .pricing-card.featured {
         transform: none;
     }
