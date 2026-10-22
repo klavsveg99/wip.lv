@@ -1559,8 +1559,8 @@ footer {
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-top: 32px;
+    gap: 24px;
+    margin-top: 28px;
 }
 
 .pricing-card {
@@ -1591,8 +1591,8 @@ footer {
 
 .pricing-badge {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 12px;
+    left: 16px;
     display: inline-block;
     background: transparent;
     color: var(--accent);
@@ -1606,8 +1606,8 @@ footer {
 }
 
 .pricing-header {
-    min-height: 104px;
-    margin: 24px 0 12px;
+    min-height: 64px;
+    margin: 14px 0 6px;
 }
 
 .pricing-header h3 {
@@ -1623,12 +1623,10 @@ footer {
 
 .pricing-price {
     display: flex;
-    align-items: baseline;
-    row-gap: 0px;
-	column-gap: 10px;
-	flex-wrap: wrap;
-    min-height: 48px;
-    margin-bottom: 6px;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 66px;
+    margin-bottom: 4px;
 }
 
 .pricing-recurring {
@@ -1656,11 +1654,11 @@ footer {
 .pricing-features {
     list-style: none;
     padding: 0;
-    margin: 16px 0 20px;
+    grid-template-rows: repeat(4, minmax(48px, 1fr));
+    margin: 12px 0 16px;
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    gap: 8px;
 }
 
 .pricing-features li {
@@ -2476,6 +2474,10 @@ footer {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .services-grid,
     .benefits-grid,
     .process-grid,
@@ -2586,11 +2588,18 @@ footer {
 
     .pricing-header {
         min-height: 0;
-        margin-top: 24px;
+        margin-top: 14px;
     }
     
     .pricing-price {
+        min-height: 0;
         margin-bottom: 0;
+    }
+
+    .pricing-features {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
     
     .pricing-card.featured {
