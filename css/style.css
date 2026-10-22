@@ -1630,8 +1630,9 @@ footer {
 
 .pricing-price {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 10px;
     min-height: 66px;
     margin-bottom: 4px;
 }
