@@ -23,7 +23,7 @@
     <meta property="og:description" content="Izstrādājam mājaslapas, interneta veikalus un pielāgotu programmatūru, pārvaldām Google Ads reklāmas un ieviešam AI automatizāciju.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wip.lv/">
-    <link rel="stylesheet" href="css/style.css?v=80">
+    <link rel="stylesheet" href="css/style.css?v=81">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
@@ -111,11 +111,11 @@
             </div>
 
             <div class="portfolio-grid">
-                <a href="https://restoransmio.lv/" target="_blank" class="portfolio-card">
+                <a href="https://restoransmio.lv/" target="_blank" class="portfolio-card" data-pf-key="restoransmio" aria-haspopup="dialog">
                     <div class="portfolio-image">
                         <img src="images/restoransmio.jpg" alt="RestoransMio.lv">
                         <div class="portfolio-overlay">
-                            <span class="portfolio-link-btn">Apmeklēt <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="portfolio-link-btn">Apskatīt <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
                     </div>
                     <div class="portfolio-content">
@@ -124,11 +124,11 @@
                     </div>
                 </a>
 
-                <a href="https://skujkoks.lv/" target="_blank" class="portfolio-card">
+                <a href="https://skujkoks.lv/" target="_blank" class="portfolio-card" data-pf-key="skujkoks" aria-haspopup="dialog">
                     <div class="portfolio-image">
                         <img src="images/skujkoks.jpg" alt="Skujkoks.lv">
                         <div class="portfolio-overlay">
-                            <span class="portfolio-link-btn">Apmeklēt <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="portfolio-link-btn">Apskatīt <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
                     </div>
                     <div class="portfolio-content">
@@ -137,11 +137,11 @@
                     </div>
                 </a>
 
-                <a href="https://asl.lv" target="_blank" class="portfolio-card">
+                <a href="https://asl.lv" target="_blank" class="portfolio-card" data-pf-key="asl" aria-haspopup="dialog">
                     <div class="portfolio-image">
                         <img src="images/asl.jpg" alt="ASL.lv">
                         <div class="portfolio-overlay">
-                            <span class="portfolio-link-btn">Apmeklēt <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="portfolio-link-btn">Apskatīt <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
                     </div>
                     <div class="portfolio-content">
@@ -150,11 +150,11 @@
                     </div>
                 </a>
 
-                <a href="https://gude.lv" target="_blank" class="portfolio-card">
+                <a href="https://gude.lv" target="_blank" class="portfolio-card" data-pf-key="gude" aria-haspopup="dialog">
                     <div class="portfolio-image">
                         <img src="images/gude.jpg" alt="Gude.lv">
                         <div class="portfolio-overlay">
-                            <span class="portfolio-link-btn">Apmeklēt <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="portfolio-link-btn">Apskatīt <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
                     </div>
                     <div class="portfolio-content">
@@ -163,11 +163,11 @@
                     </div>
                 </a>
 
-                <a href="https://franciskadraudze.lv" target="_blank" class="portfolio-card">
+                <a href="https://franciskadraudze.lv" target="_blank" class="portfolio-card" data-pf-key="franciskadraudze" aria-haspopup="dialog">
                     <div class="portfolio-image">
                         <img src="images/franciska.jpg" alt="FranciskaDraudze.lv">
                         <div class="portfolio-overlay">
-                            <span class="portfolio-link-btn">Apmeklēt <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="portfolio-link-btn">Apskatīt <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
                     </div>
                     <div class="portfolio-content">
@@ -176,11 +176,11 @@
                     </div>
                 </a>
 
-                <a href="https://latvijasfondi.lv/" target="_blank" class="portfolio-card">
+                <a href="https://latvijasfondi.lv/" target="_blank" class="portfolio-card" data-pf-key="latvijasfondi" aria-haspopup="dialog">
                     <div class="portfolio-image">
                         <img src="images/latvijasfondi.jpg" alt="LatvijasFondi.lv">
                         <div class="portfolio-overlay">
-                            <span class="portfolio-link-btn">Apmeklēt <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="portfolio-link-btn">Apskatīt <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
                     </div>
                     <div class="portfolio-content">
@@ -961,11 +961,44 @@
         <div class="cookie-modal-overlay" id="cookieModalOverlay"></div>
     </div>
 
+    <!-- PORTFOLIO DETAILS MODAL -->
+    <div class="pf-modal" id="portfolioModal" aria-hidden="true">
+        <div class="pf-modal-backdrop" data-pf-close></div>
+        <div class="pf-modal-panel" role="dialog" aria-modal="true" aria-labelledby="pfModalTitle">
+            <button class="pf-modal-close" type="button" data-pf-close aria-label="Aizvērt">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <div class="pf-modal-media">
+                <img id="pfModalImage" src="images/restoransmio.jpg" alt="">
+            </div>
+            <div class="pf-modal-body">
+                <p class="pf-modal-kicker" id="pfModalKicker"></p>
+                <div class="pf-modal-heading">
+                    <h3 id="pfModalTitle"></h3>
+                    <a class="pf-modal-url" id="pfModalUrl" href="#" target="_blank" rel="noopener noreferrer">
+                        <span id="pfModalUrlText"></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="pf-modal-desc" id="pfModalDesc"></p>
+                <p class="pf-modal-note"><span class="pf-modal-note-label">Labi paveikts</span> <span id="pfModalNote"></span></p>
+                <div class="pf-modal-points">
+                    <p class="pf-modal-points-title">Kas raksturo vietni</p>
+                    <ul id="pfModalPoints"></ul>
+                </div>
+                <a class="btn btn-primary pf-modal-visit" id="pfModalVisit" href="#" target="_blank" rel="noopener noreferrer">
+                    <span>Apmeklēt vietni</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- BACK TO TOP BUTTON -->
     <button class="back-to-top" id="backToTop" aria-label="Atpakaļ uz augšu">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <script src="js/main.js?v=1.5.1"></script>
+    <script src="js/main.js?v=1.5.2"></script>
 </body>
 </html>

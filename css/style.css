@@ -879,6 +879,288 @@ nav a:not(.header-cta).active::after {
     line-height: 1.6;
 }
 
+/* PORTFOLIO DETAILS MODAL */
+body.pf-modal-open {
+    overflow: hidden;
+}
+
+.pf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, visibility 0s linear 0.22s;
+}
+
+.pf-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.22s ease;
+}
+
+.pf-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 15, 15, 0.58);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.22s ease;
+}
+
+.pf-modal.is-open .pf-modal-backdrop {
+    opacity: 1;
+}
+
+.pf-modal-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min(760px, 100%);
+    max-height: calc(100dvh - 48px);
+    overflow: hidden;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.24);
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+    transition: opacity 0.18s ease, transform 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pf-modal.is-open .pf-modal-panel {
+    opacity: 1;
+    transform: none;
+}
+
+.pf-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pf-modal-close:hover,
+.pf-modal-close:focus-visible {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.pf-modal-media {
+    flex: 0 0 auto;
+    height: 320px;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border);
+}
+
+.pf-modal-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.pf-modal-body {
+    min-height: 0;
+    padding: 32px 36px 36px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.pf-modal-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.pf-modal-kicker::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.pf-modal-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.pf-modal-heading h3 {
+    font-size: 30px;
+    letter-spacing: -0.03em;
+}
+
+.pf-modal-url {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.pf-modal-url:hover {
+    color: var(--text);
+    border-color: var(--text);
+}
+
+.pf-modal-url i {
+    font-size: 10px;
+}
+
+.pf-modal-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+.pf-modal-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 2px solid var(--accent);
+    background: var(--bg-light);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+}
+
+.pf-modal-note-label {
+    display: block;
+    margin-bottom: 3px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.pf-modal-points {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.pf-modal-points-title {
+    margin-bottom: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.pf-modal-points ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 28px;
+    list-style: none;
+}
+
+.pf-modal-points li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.pf-modal-points li::before {
+    content: "";
+    position: absolute;
+    top: 0.62em;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+}
+
+.pf-modal-visit {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 26px;
+    padding: 13px 22px;
+}
+
+.pf-modal-visit i {
+    font-size: 12px;
+}
+
+.pf-modal-visit:hover i {
+    transform: translate(2px, -2px);
+}
+
+@media (max-width: 767px) {
+    .pf-modal {
+        align-items: flex-end;
+        padding: 16px;
+    }
+
+    .pf-modal-panel {
+        max-height: calc(100dvh - 32px);
+    }
+
+    .pf-modal-media {
+        height: 220px;
+    }
+
+    .pf-modal-body {
+        padding: 24px 20px;
+    }
+
+    .pf-modal-heading h3 {
+        font-size: 24px;
+    }
+
+    .pf-modal-points ul {
+        grid-template-columns: 1fr;
+    }
+
+    .pf-modal-visit {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pf-modal,
+    .pf-modal-backdrop,
+    .pf-modal-panel {
+        transition-duration: 0.01ms;
+    }
+}
+
 /* BENEFITS GRID */
 .benefits-section {
     background: transparent;

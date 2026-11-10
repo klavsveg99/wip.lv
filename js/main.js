@@ -272,8 +272,308 @@ class CookieConsent {
     }
 }
 
+const PORTFOLIO_PROJECTS = {
+    restoransmio: {
+        name: 'RestoransMio.lv',
+        image: 'images/restoransmio.jpg',
+        url: 'https://restoransmio.lv/',
+        displayUrl: 'restoransmio.lv',
+        lv: {
+            type: 'Restorāns',
+            description: 'Tumši zaļš damaskas raksts, zelta akcenti un rokraksta logotips rada mājīgu, nedaudz greznu restorāna noskaņu. Bloki rit kā žurnālā, bet ēdienkarte atveras kā pāršķirama grāmata. Rezervācijas poga ir redzama visā lapā, un vietne ir pieejama latviešu, angļu un krievu valodā.',
+            note: 'Noskaņa un praktiskums ir līdzsvarā: bagātīgā vizuālā valoda netraucē ātri atrast ēdienkarti vai veikt rezervāciju.',
+            points: [
+                'Interaktīva ēdienkarte ar pāršķiramām lappusēm',
+                'Virtuāla tūre pa restorāna telpām',
+                'Rezervācijas poga pastāvīgi redzama',
+                'Latviešu, angļu un krievu valodas',
+                'Sociālo tīklu un Tripadvisor saites'
+            ]
+        },
+        en: {
+            type: 'Restaurant',
+            description: 'Deep green damask, gold accents and a script logo give the site a cosy, quietly upscale restaurant feel. Sections read like a magazine spread, while the menu opens as a page-turning book. The reservation button stays visible throughout and the site is available in Latvian, English and Russian.',
+            note: 'Atmosphere and practicality are balanced: the rich visual language never gets in the way of finding the menu or booking a table.',
+            points: [
+                'Interactive menu with page-turning spreads',
+                'Virtual tour of the restaurant',
+                'Reservation button always within reach',
+                'Latvian, English and Russian versions',
+                'Social and Tripadvisor links'
+            ]
+        }
+    },
+    skujkoks: {
+        name: 'Skujkoks.lv',
+        image: 'images/skujkoks.jpg',
+        url: 'https://skujkoks.lv/',
+        displayUrl: 'skujkoks.lv',
+        lv: {
+            type: 'Mežsaimniecība',
+            description: 'Balta telpa, maigi zaļa navigācija un melni akcenti rada mierīgu, uzticamu zīmolu. Hero attēls ar mežu pildītu pūci uzreiz pasaka stāstu par mežu, bet lapa ir sadalīta skaidrās sadaļās ar enkuriem: par uzņēmumu, pakalpojumi, partneri, komanda, atsauksmes un jaunumi. Katram pakalpojumam ir sava detaļu lapa, un kontaktforma ļauj ātri pieteikt konsultāciju.',
+            note: 'Vienkāršā struktūra un spēcīgais vizuālais motīvs padara plašo pakalpojumu klāstu viegli pārskatāmu.',
+            points: [
+                'Vienas lapas navigācija ar sadaļu enkuriem',
+                'Atsevišķa lapa katram meža pakalpojumam',
+                'Partneru, komandas un atsauksmju sadaļas',
+                'Jaunumu bloks un pieteikuma forma',
+                'Zaļš zīmols ar meža motīviem'
+            ]
+        },
+        en: {
+            type: 'Forestry',
+            description: 'White space, a soft sage navigation bar and black accents give the site a calm, trustworthy brand feel. A hero image of an owl filled with forest instantly tells the forestry story, while the page breaks into clear anchored sections: about, services, partners, team, testimonials and news. Every service has its own detail page and the contact form makes it easy to request a consultation.',
+            note: 'A simple structure and a strong visual motif make a broad service range easy to scan.',
+            points: [
+                'Single-page navigation with section anchors',
+                'A separate page for every forestry service',
+                'Partners, team and testimonial sections',
+                'News block and enquiry form',
+                'A green brand built on forest imagery'
+            ]
+        }
+    },
+    asl: {
+        name: 'ASL.lv',
+        image: 'images/asl.jpg',
+        url: 'https://asl.lv/',
+        displayUrl: 'asl.lv',
+        lv: {
+            type: 'Pasākumu tehnika',
+            description: 'Kinematogrāfisks tumšs hero ar skatuves prožektoru stariem un lielu, pārliecinošu virsrakstu uzreiz liek just pasākuma mērogu. Zem tā gaiša sadaļa ar milzīgu tipogrāfiju un blīvu pakalpojumu režģi rada tehnisku, profesionālu kontrastu. Lapa darbojas kā portfolio: reāli projekti ar LED ekrāniem, skatuvēm un apgaismojumu, deviņas pakalpojumu kategorijas, zīmolu partneri un komandas profili.',
+            note: 'Vizuālais tēls un pierādījumi ir vienā vietā: lielais hero piesaista uzmanību, bet projektu sadaļa parāda reālu darbu.',
+            points: [
+                'Kinematogrāfisks hero ar skatuves gaismām',
+                'Portfolio ar reāliem pasākumu projektiem',
+                'Deviņas skaidras pakalpojumu kategorijas',
+                'Zīmolu partneru josla',
+                'Piecas valodas un komandas profili'
+            ]
+        },
+        en: {
+            type: 'Event technology',
+            description: 'A cinematic dark hero with stage spotlight beams and an oversized headline sets the scale of an event immediately. Below it, a light section with huge typography and a dense service grid creates a technical, professional contrast. The site doubles as a portfolio: real projects with LED screens, stages and lighting, nine service categories, brand partners and team profiles.',
+            note: 'Image and proof sit together: the big hero grabs attention, while the project section shows real work.',
+            points: [
+                'Cinematic hero with stage lighting',
+                'Portfolio of real event projects',
+                'Nine clearly grouped service categories',
+                'A row of brand partners',
+                'Five languages and team profiles'
+            ]
+        }
+    },
+    gude: {
+        name: 'Gude.lv',
+        image: 'images/gude.jpg',
+        url: 'https://gude.lv/',
+        displayUrl: 'gude.lv',
+        lv: {
+            type: 'Ražotājs',
+            description: 'Silts krēmkrāsas fons, gandrīz melni paneļi un oranžs akcents kopā ar blīvu, industriālu tipogrāfiju rada izteiktu ražotāja raksturu. Lielie skaitļi (20+ gadi, 1700+ m³ mēnesī, 18% mitrums) uzreiz nodod uzticamību, bet produkcijas, izmēru un iepakojuma sadaļas atbild uz praktiskiem jautājumiem. Vietne ir sešās valodās, un pirkuma pieprasījums atveras ērtā modālajā logā.',
+            note: 'Konkrēti skaitļi un skaidra tehniskā informācija pārvērš vienkāršu produktu pārliecinošā B2B piedāvājumā.',
+            points: [
+                'Industriāla tipogrāfija un silta krāsu palete',
+                'Uzticamības skaitļi pirmajā ekrānā',
+                'Produktu, izmēru un iepakojuma specifikācijas',
+                'Loģistikas un eksporta sadaļa',
+                'Sešas valodas un pirkuma modālais logs'
+            ]
+        },
+        en: {
+            type: 'Manufacturer',
+            description: 'A warm cream background, near-black panels and an orange accent, paired with dense industrial typography, give the site a distinct manufacturer character. The big numbers (20+ years, 1700+ m³ per month, 18% moisture) establish credibility at a glance, while the product, size and packaging sections answer practical questions. The site is available in six languages and the purchase enquiry opens in a convenient modal.',
+            note: 'Concrete numbers and clear technical information turn a simple product into a convincing B2B offer.',
+            points: [
+                'Industrial typography and a warm palette',
+                'Credibility numbers on the first screen',
+                'Product, size and packaging specifications',
+                'Logistics and export section',
+                'Six languages and a purchase modal'
+            ]
+        }
+    },
+    franciskadraudze: {
+        name: 'FranciskaDraudze.lv',
+        image: 'images/franciska.jpg',
+        url: 'https://franciskadraudze.lv/',
+        displayUrl: 'franciskadraudze.lv',
+        lv: {
+            type: 'Draudze',
+            description: 'Pilnekrāna baznīcas gaisa fotogrāfija, dziļi bordo navigācija un serifa virsraksti rada mierīgu, cieņpilnu noskaņu. Saturs ir sakārtots tā, lai draudzes loceklis ātri atrastu jaunumus, notikumu kalendāru, grupas, koru informāciju un baznīcas vēsturi, bet ziedojumu poga un sociālie tīkli ir vienmēr pa rokai. Fotogrāfijas un siltais tonis padara lapu personisku, nevis oficiālu.',
+            note: 'Spēcīgā hero fotogrāfija un skaidrā navigācija līdzsvaro bagāto kopienas saturu ar vieglu lietošanu.',
+            points: [
+                'Pilnekrāna baznīcas fotogrāfija ar maigu pārklājumu',
+                'Bordo navigācija un serifa tipogrāfija',
+                'Jaunumu bloks un notikumu kalendārs',
+                'Draudzes grupu, koru un galerijas sadaļas',
+                'Ziedojumu poga, YouTube un Facebook'
+            ]
+        },
+        en: {
+            type: 'Parish',
+            description: 'A full-screen aerial photograph of the church, deep burgundy navigation and serif headings create a calm, respectful mood. The content is arranged so a parish member can quickly find news, the event calendar, groups, choir information and church history, while the donation button and social links are always at hand. Photography and a warm tone make the page feel personal rather than official.',
+            note: 'The strong hero photograph and clear navigation balance rich community content with easy use.',
+            points: [
+                'Full-screen church photograph with a soft overlay',
+                'Burgundy navigation and serif typography',
+                'News block and event calendar',
+                'Parish groups, choirs and gallery sections',
+                'Donation button, YouTube and Facebook'
+            ]
+        }
+    },
+    latvijasfondi: {
+        name: 'LatvijasFondi.lv',
+        image: 'images/latvijasfondi.jpg',
+        url: 'https://latvijasfondi.lv/',
+        displayUrl: 'latvijasfondi.lv',
+        lv: {
+            type: 'Nekustamie īpašumi',
+            description: 'Tumši zils fons, oranžs akcents un baltas, noapaļotas formas rada mūsdienīgu un uzticamu finanšu iespaidu. Vissvarīgākais ir novērtējuma pieprasījums: daudzpakāpju forma ar soļu indikatoru jau atrodas hero sadaļā, tāpēc apmeklētājs var sākt bez meklēšanas. Zemāk ir pakalpojumi, juridiski droša procesa izklāsts, seši uzticamības iemesli, klientu atsauksmes un BUJ sadaļa.',
+            note: 'Forma ir lapas centrā, nevis paslēpta: tas ir reti redzams un ļoti efektīvs veids, kā pārvērst apmeklētāju pieprasījumā.',
+            points: [
+                'Daudzpakāpju novērtējuma forma pirmajā ekrānā',
+                'Tumši zila un oranža kontrasta shēma',
+                '"Seši iemesli" uzticamības bloks',
+                'Klientu atsauksmes un BUJ sadaļa',
+                'Piecas valodas un ātra pieteikšanās'
+            ]
+        },
+        en: {
+            type: 'Real estate',
+            description: 'A deep navy background, orange accent and white rounded shapes create a modern, trustworthy financial impression. The most important action is the valuation request: a multi-step form with a progress indicator sits right in the hero, so visitors can start without searching. Below are services, a clear legal process, six credibility reasons, client testimonials and an FAQ section.',
+            note: 'The form is the centre of the page, not hidden away: a rare and very effective way to turn a visitor into an enquiry.',
+            points: [
+                'Multi-step valuation form in the hero',
+                'Deep navy and orange contrast',
+                'A six-reason credibility block',
+                'Client testimonials and an FAQ section',
+                'Five languages and a fast enquiry flow'
+            ]
+        }
+    }
+};
+
+class PortfolioModal {
+    constructor() {
+        this.modal = document.getElementById('portfolioModal');
+        if (!this.modal) return;
+
+        this.panel = this.modal.querySelector('.pf-modal-panel');
+        this.closeButton = this.modal.querySelector('.pf-modal-close');
+        this.image = document.getElementById('pfModalImage');
+        this.kicker = document.getElementById('pfModalKicker');
+        this.title = document.getElementById('pfModalTitle');
+        this.url = document.getElementById('pfModalUrl');
+        this.urlText = document.getElementById('pfModalUrlText');
+        this.description = document.getElementById('pfModalDesc');
+        this.note = document.getElementById('pfModalNote');
+        this.points = document.getElementById('pfModalPoints');
+        this.visit = document.getElementById('pfModalVisit');
+        this.language = document.documentElement.lang.toLowerCase().startsWith('en') ? 'en' : 'lv';
+        this.lastTrigger = null;
+        this.closeTimer = null;
+
+        this.init();
+    }
+
+    init() {
+        this.modal.querySelectorAll('[data-pf-close]').forEach((element) => {
+            element.addEventListener('click', () => this.close());
+        });
+
+        document.querySelectorAll('.portfolio-card[data-pf-key]').forEach((card) => {
+            card.addEventListener('click', (event) => {
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                event.preventDefault();
+                this.open(card.dataset.pfKey, card);
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!this.modal.classList.contains('is-open')) return;
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                this.close();
+                return;
+            }
+
+            if (event.key === 'Tab') this.trapFocus(event);
+        });
+    }
+
+    open(key, trigger) {
+        const project = PORTFOLIO_PROJECTS[key];
+        if (!project) return;
+
+        clearTimeout(this.closeTimer);
+        this.lastTrigger = trigger || document.activeElement || null;
+        this.render(project);
+        this.modal.classList.add('is-open');
+        this.modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('pf-modal-open');
+        this.closeButton.focus({ preventScroll: true });
+    }
+
+    close() {
+        if (!this.modal.classList.contains('is-open')) return;
+
+        this.modal.classList.remove('is-open');
+        this.modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('pf-modal-open');
+
+        clearTimeout(this.closeTimer);
+        this.closeTimer = setTimeout(() => {
+            if (this.lastTrigger && document.contains(this.lastTrigger)) {
+                this.lastTrigger.focus({ preventScroll: true });
+            }
+        }, 220);
+    }
+
+    render(project) {
+        const content = project[this.language] || project.lv;
+
+        this.image.src = project.image;
+        this.image.alt = project.name + (this.language === 'en' ? ' website screenshot' : ' mājaslapas ekrānuzņēmums');
+        this.kicker.textContent = content.type;
+        this.title.textContent = project.name;
+        this.url.href = project.url;
+        this.urlText.textContent = project.displayUrl;
+        this.description.textContent = content.description;
+        this.note.textContent = content.note;
+        this.visit.href = project.url;
+        this.points.replaceChildren(...content.points.map((point) => {
+            const item = document.createElement('li');
+            item.textContent = point;
+            return item;
+        }));
+        this.panel.scrollTop = 0;
+        this.modal.querySelector('.pf-modal-body').scrollTop = 0;
+    }
+
+    trapFocus(event) {
+        const focusable = Array.from(this.modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+            .filter((element) => element.getClientRects().length > 0);
+        if (!focusable.length) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     new CookieConsent();
+    new PortfolioModal();
 
     // PRICING TABS
     const pricingTabs = Array.from(document.querySelectorAll('.pricing-tab'));
