@@ -13,7 +13,7 @@
     var UI = {
         lv: {
             loading: 'Pārbaudām lapu. Tas aizņem dažas sekundes.',
-            errorInvalid: 'Ievadi vietnes adresi, piemēram, tavaadrese.lv.',
+            errorInvalid: 'Ievadi vietnes adresi, piemēram, adrese.lv.',
             errorGeneric: 'Pārbaudi neizdevās pabeigt. Pamēģini vēlreiz.',
             errorNetwork: 'Nevarējām sazināties ar pārbaudes serveri. Pamēģini vēlreiz.',
             errors: {
