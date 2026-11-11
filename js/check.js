@@ -29,11 +29,14 @@
                 blocked: 'Vietne bloķē automātiskas pārbaudes. Atver to pārlūkā un pārbaudi manuāli.'
             },
             scoreSecurity: 'Drošība',
+            scoreEmail: 'E-pasts',
             scoreVisibility: 'MI un satura redzamība',
             scoreOf: 'no 100',
             scoreNone: 'nav datu',
             issuesTitle: 'Ko var uzlabot',
             issuesIntro: 'Sakārtots pa grupām, kuras var novērst vienā pasūtījumā.',
+            infoTitle: 'Papildu informācija',
+            infoNote: 'Šie novērojumi neietilpst nevienā maksas grupā.',
             passedTitle: 'Jau kārtībā',
             techLabel: 'Konstatēts:',
             sev: { high: 'Augsta', medium: 'Vidēja', low: 'Zema', info: 'Info' },
@@ -73,11 +76,14 @@
                 blocked: 'The site blocks automated checks. Open it in a browser and check it manually.'
             },
             scoreSecurity: 'Security',
+            scoreEmail: 'Email',
             scoreVisibility: 'AI and content visibility',
             scoreOf: 'out of 100',
             scoreNone: 'no data',
             issuesTitle: 'What can be improved',
             issuesIntro: 'Grouped by the fixes that come in one order.',
+            infoTitle: 'Additional information',
+            infoNote: 'These observations are not part of any paid group.',
             passedTitle: 'Already fine',
             techLabel: 'Found:',
             sev: { high: 'High', medium: 'Medium', low: 'Low', info: 'Info' },
@@ -132,7 +138,7 @@
             mtasts: ['MTA-STS', 'Pasta ceļš nav aizsargāts pret pazemināšanu uz nešifrētu savienojumu.'],
             emails: ['Atklātas e-pasta adreses', 'Adreses lapā ir viegls mērķis surogātpasta robotiem.'],
             robots: ['robots.txt MI robotiem', 'MI robotiem var būt liegts ielādēt lapu, tāpēc tā neparādās MI atbildēs.', { warn: 'Nav robots.txt, tāpēc robotu atļaujas nav pārskatāmas.' }],
-            llms: ['llms.txt', 'MI asistentiem nav īsa satura kopsavilkuma, tāpēc tie saturu interpretē nejauši.'],
+            llms: ['llms.txt', 'Nav llms.txt, kas MI rīkiem dod īsu lapas kopsavilkumu. Tas nav Google ranga faktors.'],
             sitemap: ['Vietnes karte', 'Meklētāji un MI rīki neatrod visas lapas vienā failā.'],
             title: ['Lapas nosaukums', 'Nosaukums ir par īsu, par garu vai tā nav, tāpēc meklēšanā tas izskatās nepabeigts.'],
             meta: ['Lapas apraksts', 'Apraksta nav vai tas ir nepiemērotā garumā, tāpēc meklētājs to nogriež vai nerāda.'],
@@ -164,7 +170,7 @@
             mtasts: ['MTA-STS', 'The mail path is not protected against downgrading to an unencrypted connection.'],
             emails: ['Exposed email addresses', 'Addresses on the page are an easy target for spam bots.'],
             robots: ['robots.txt for AI crawlers', 'AI crawlers may be blocked from loading the page, so it does not appear in AI answers.', { warn: 'There is no robots.txt, so crawler permissions cannot be reviewed.' }],
-            llms: ['llms.txt', 'AI assistants have no short summary of the content, so they interpret it loosely.'],
+            llms: ['llms.txt', 'No llms.txt to give AI tools a short page summary. It is not a Google ranking factor.'],
             sitemap: ['Sitemap', 'Search engines and AI tools cannot find every page in one file.'],
             title: ['Page title', 'The title is too short, too long or missing, so it looks unfinished in search results.'],
             meta: ['Page description', 'The description is missing or the wrong length, so search results show nothing or cut it off.'],
@@ -196,7 +202,7 @@
         mx: ['trust', 'info'],
         caa: ['trust', 'low'],
         mtasts: ['trust', 'low'],
-        emails: ['trust', 'low'],
+        emails: ['info', 'info'],
         robots: ['visibility', 'medium'],
         llms: ['visibility', 'low'],
         sitemap: ['visibility', 'medium'],
@@ -333,11 +339,13 @@
         if (!report) return;
         report.hidden = false;
 
-        var security = scoreFor(data, ['security', 'trust']);
+        var security = scoreFor(data, ['security']);
+        var email = scoreFor(data, ['trust']);
         var visibility = scoreFor(data, ['visibility']);
         if (scoresBox) {
             scoresBox.textContent = '';
             scoresBox.appendChild(makeScore(UI.scoreSecurity, security));
+            scoresBox.appendChild(makeScore(UI.scoreEmail, email));
             scoresBox.appendChild(makeScore(UI.scoreVisibility, visibility));
         }
 
@@ -352,7 +360,7 @@
             metaBox.textContent = bits.join(' · ');
         }
 
-        var foundByPackage = { security: [], trust: [], visibility: [] };
+        var foundByPackage = { security: [], trust: [], visibility: [], info: [] };
         var passed = [];
         Object.keys(CHECK_META).forEach(function (id) {
             var state = data.checks[id];
@@ -408,6 +416,28 @@
                 group.appendChild(list);
                 issuesBox.appendChild(group);
             });
+
+            var infoItems = foundByPackage.info || [];
+            if (infoItems.length) {
+                var infoGroup = document.createElement('section');
+                infoGroup.className = 'check-group check-group-info';
+                var infoHead = document.createElement('div');
+                infoHead.className = 'check-group-head';
+                var infoTitle = document.createElement('h4');
+                infoTitle.textContent = UI.infoTitle;
+                var infoNote = document.createElement('span');
+                infoNote.textContent = UI.infoNote;
+                infoHead.appendChild(infoTitle);
+                infoHead.appendChild(infoNote);
+                infoGroup.appendChild(infoHead);
+                var infoList = document.createElement('ul');
+                infoList.className = 'check-issue-list';
+                infoItems.forEach(function (item) {
+                    infoList.appendChild(issueRow(item.id, item.state));
+                });
+                infoGroup.appendChild(infoList);
+                issuesBox.appendChild(infoGroup);
+            }
 
             if (passed.length) {
                 var details = document.createElement('details');

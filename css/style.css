@@ -3772,3 +3772,24 @@ footer {
         display: none;
     }
 }
+
+/* Check report: three group scores and the informational bucket */
+.check-scores {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.check-score-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.check-group-info .check-group-head h4 {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 767px) {
+    .check-scores {
+        grid-template-columns: 1fr;
+    }
+}
