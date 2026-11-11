@@ -2687,7 +2687,8 @@ footer {
 
     .nav-items-grid + .contact-cta-btn {
         margin-top: 0;
-    }    
+    }
+
     nav .lang-switch {
         display: flex !important;
         margin-top: 20px;
