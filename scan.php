@@ -174,6 +174,29 @@ function dns_txt(string $name): array
     return $values;
 }
 
+function dns_dkim_txt(string $name): array
+{
+    $values = dns_txt($name);
+    if ($values) {
+        return $values;
+    }
+    // Hostinger delegates DKIM with CNAME records, and not every resolver
+    // follows the CNAME for a TXT query.
+    $cnames = @dns_get_record($name, DNS_CNAME);
+    if (is_array($cnames)) {
+        foreach ($cnames as $record) {
+            $target = rtrim((string)($record['target'] ?? ''), '.');
+            if ($target !== '') {
+                $values = dns_txt($target);
+                if ($values) {
+                    return $values;
+                }
+            }
+        }
+    }
+    return [];
+}
+
 function dns_has(string $name, int $type): bool
 {
     $records = @dns_get_record($name, $type);
@@ -513,11 +536,14 @@ if ($dmarc === '') {
     $c['dmarc'] = ['status' => 'warn', 'detail' => 'Politika nav norādīta'];
 }
 
-$dkimSelectors = ['default', 'mail', 'google', 'selector1', 'k1', 's1'];
+$dkimSelectors = [
+    'default', 'mail', 'google', 'selector1', 'selector2', 'k1', 's1',
+    'hostingermail-a', 'hostingermail-b', 'hostingermail-c', 'reach-a', 'reach-b',
+];
 $dkimFound = '';
 foreach ($dkimSelectors as $selector) {
-    foreach (dns_txt($selector . '._domainkey.' . $host) as $txt) {
-        if (stripos($txt, 'v=DKIM1') === 0 || stripos($txt, 'p=') !== false) {
+    foreach (dns_dkim_txt($selector . '._domainkey.' . $host) as $txt) {
+        if (stripos($txt, 'v=DKIM1') !== false && preg_match('~p=[A-Za-z0-9+/]{10,}~', $txt)) {
             $dkimFound = $selector;
             break 2;
         }
