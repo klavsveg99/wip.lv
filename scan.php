@@ -145,6 +145,7 @@ function fetch_many(array $urls, bool $head = false, int $timeout = 5): array
     foreach ($handles as $key => $ch) {
         $out[$key] = [
             'code' => (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE),
+            'redirects' => (int)curl_getinfo($ch, CURLINFO_REDIRECT_COUNT),
             'final_url' => (string)curl_getinfo($ch, CURLINFO_EFFECTIVE_URL),
             'body' => (string)curl_multi_getcontent($ch),
         ];
@@ -323,7 +324,8 @@ $c = [];
 
 // HTTPS and transport.
 $httpProbe = $aux['http'];
-$httpRedirects = $httpProbe['code'] >= 301 && $httpProbe['code'] <= 308 && str_starts_with($httpProbe['final_url'], 'https://');
+// RESPONSE_CODE is the final response after redirects, so look at the redirect count.
+$httpRedirects = ($httpProbe['redirects'] ?? 0) > 0 && str_starts_with($httpProbe['final_url'] ?? '', 'https://');
 if (!$isHttps) {
     $c['https'] = ['status' => 'fail', 'detail' => 'http://' . $host . '/'];
 } elseif ($httpRedirects) {
@@ -561,7 +563,7 @@ foreach ($aiAgents as $agent) {
     }
 }
 if (!$robotsOk) {
-    $c['robots'] = ['status' => 'fail', 'detail' => 'robots.txt nav atrasts'];
+    $c['robots'] = ['status' => 'warn', 'detail' => 'robots.txt nav atrasts'];
 } elseif ($blockedAgents) {
     $c['robots'] = ['status' => 'fail', 'detail' => 'Aizliegts: ' . implode(', ', $blockedAgents)];
 } elseif (preg_match('~User-agent:\s*\*\s*(?:\r?\n)Disallow:\s*/\s*(?:\r?\n|$)~i', $robots['body'])) {
