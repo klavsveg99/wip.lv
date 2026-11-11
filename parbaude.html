@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Bezmaksas mājaslapas pārbaude: drošība un MI redzamība | WIP.LV</title>
+    <meta name="description" content="Bezmaksas mājaslapas pārbaude: drošības galvenes, e-pasta autentifikācija un MI uztveramība. Uzzini atrastos trūkumus un to novēršanas cenu vienā pārskatā.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://wip.lv/parbaude.html">
+    <link rel="alternate" hreflang="lv" href="https://wip.lv/parbaude.html">
+    <link rel="alternate" hreflang="en" href="https://wip.lv/parbaude-en.html">
+    <meta property="og:title" content="Bezmaksas mājaslapas pārbaude | WIP.LV">
+    <meta property="og:description" content="Drošība, e-pasts un MI redzamība vienā pārskatā. Pārbaudi savu mājaslapu bez maksas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wip.lv/parbaude.html">
+    <link rel="stylesheet" href="css/style.css?v=85">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-text">WIP<span>.LV</span></div>
+            </a>
+            <nav id="mainNav">
+                <div class="nav-items-grid">
+                    <a href="index.html#portfolio">Portfolio</a>
+                    <a href="index.html#pakalpojumi">Pakalpojumi</a>
+                    <a href="index.html#process">Process</a>
+                    <a href="index.html#nozares">Risinājumi</a>
+                    <a href="index.html#cenas">Cenas</a>
+                    <a href="parbaude.html">Pārbaude</a>
+                </div>
+                <a href="#" class="contact-cta-btn header-cta">Sazināties</a>
+                <div class="lang-switch">
+                    <a href="parbaude.html" class="active">LV</a>
+                    <a href="parbaude-en.html">EN</a>
+                </div>
+            </nav>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span class="menu-text">Menu</span>
+            <span class="hamburger-bar"></span>
+        </button>
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    </header>
+
+    <main>
+        <section class="check-hero" id="siteCheck">
+            <div class="container">
+                <div class="check-hero-inner">
+                    <p class="check-eyebrow">Bezmaksas pārbaude</p>
+                    <h1>Ko par tavu mājaslapu redz pārlūks, pasts un MI.</h1>
+                    <p class="check-intro">Ievadi adresi un saņem pārskatu par drošību, e-pasta autentifikāciju un MI uztveramību. Pārbaude ir pasīva: lapā nekas netiek mainīts, un nekas nav jāreģistrē.</p>
+
+                    <form class="check-form" id="checkForm" novalidate>
+                        <label class="check-label" for="checkUrl">Mājaslapas adrese</label>
+                        <div class="check-form-row">
+                            <input class="check-input" id="checkUrl" name="url" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" required placeholder="tavaadrese.lv">
+                            <button class="btn btn-primary" id="checkSubmit" type="submit">Pārbaudīt</button>
+                        </div>
+                        <p class="check-note">Pārbaudi tikai savas mājaslapas vai tās, kuru pārbaudi esi saskaņojis ar īpašnieku.</p>
+                    </form>
+                    <p class="check-status" id="checkStatus" role="status" aria-live="polite" hidden></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="check-report" id="checkReport" hidden>
+            <div class="container">
+                <div class="check-scores" id="checkScores"></div>
+                <p class="check-meta" id="checkMeta"></p>
+                <div class="check-issues" id="checkIssues"></div>
+            </div>
+        </section>
+
+        <section class="section" id="cenas">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">Cenas par trūkumu novēršanu</h2>
+                        <p class="section-subtitle">Trīs plašas grupas, viena cena katrai. Ja pārbaudē grupā ir pieci trūkumi, cena nemainās: labojam visus piecus, nevis vienu.</p>
+                    </div>
+                </div>
+
+                <p class="check-callout">Cena attiecas uz visiem grupas trūkumiem no tavas pārbaudes. Piemēram, drošības grupā par vienu cenu salabojam galvenes, sīkdatnes un servera iestatījumus kopā.</p>
+
+                <div class="check-packages">
+                    <article class="check-pkg" data-package="security">
+                        <h3>Drošība</h3>
+                        <p class="check-pkg-desc">Pārlūka aizsardzība, galvenes, sīkdatnes un publiski pieejamie faili.</p>
+                        <p class="check-pkg-price"><span>&euro;99</span> vienreizēji par visu grupu</p>
+                        <p class="check-pkg-found" data-pkg-found>Pārbaudi lapu, lai šeit redzētu savus trūkumus.</p>
+                        <ul class="check-pkg-issues" data-pkg-issues hidden></ul>
+                        <p class="check-pkg-more">Grupā ietilpst arī</p>
+                        <ul class="check-pkg-extras">
+                            <li><i class="fa-solid fa-check"></i><span>Visi grupas trūkumi par vienu cenu</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Galvenes pārbaudītas pārlūkā</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Sīkdatņu un sesiju pārbaude</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Atkārtota pārbaude pēc labojumiem</span></li>
+                        </ul>
+                        <label class="check-pkg-select">
+                            <input type="checkbox" data-pkg-input value="security">
+                            <span>Pievienot pieteikumam</span>
+                        </label>
+                    </article>
+
+                    <article class="check-pkg" data-package="trust">
+                        <h3>E-pasts un uzticamība</h3>
+                        <p class="check-pkg-desc">SPF, DKIM, DMARC, sertifikātu ieraksti un domēna uzticamība.</p>
+                        <p class="check-pkg-price"><span>&euro;79</span> vienreizēji par visu grupu</p>
+                        <p class="check-pkg-found" data-pkg-found>Pārbaudi lapu, lai šeit redzētu savus trūkumus.</p>
+                        <ul class="check-pkg-issues" data-pkg-issues hidden></ul>
+                        <p class="check-pkg-more">Grupā ietilpst arī</p>
+                        <ul class="check-pkg-extras">
+                            <li><i class="fa-solid fa-check"></i><span>SPF, DKIM un DMARC iestatīšana</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>DMARC atskaišu adrese</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Pasta piegādes pārbaude</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Atkārtota pārbaude pēc labojumiem</span></li>
+                        </ul>
+                        <label class="check-pkg-select">
+                            <input type="checkbox" data-pkg-input value="trust">
+                            <span>Pievienot pieteikumam</span>
+                        </label>
+                    </article>
+
+                    <article class="check-pkg" data-package="visibility">
+                        <h3>MI un satura redzamība</h3>
+                        <p class="check-pkg-desc">robots.txt, llms.txt, strukturētie dati un saturs bez JavaScript.</p>
+                        <p class="check-pkg-price"><span>&euro;89</span> vienreizēji par visu grupu</p>
+                        <p class="check-pkg-found" data-pkg-found>Pārbaudi lapu, lai šeit redzētu savus trūkumus.</p>
+                        <ul class="check-pkg-issues" data-pkg-issues hidden></ul>
+                        <p class="check-pkg-more">Grupā ietilpst arī</p>
+                        <ul class="check-pkg-extras">
+                            <li><i class="fa-solid fa-check"></i><span>robots.txt un llms.txt MI robotiem</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>schema.org uzņēmuma dati</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Kopīgošanas priekšskatījums</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Satura pārbaude bez JavaScript</span></li>
+                        </ul>
+                        <label class="check-pkg-select">
+                            <input type="checkbox" data-pkg-input value="visibility">
+                            <span>Pievienot pieteikumam</span>
+                        </label>
+                    </article>
+                </div>
+
+                <div class="check-bundle">
+                    <div class="check-bundle-copy">
+                        <h3>Visas trīs grupas</h3>
+                        <p>Visi pārbaudē atrastie trūkumi vienā darbā, ar vienu atkārtotu pārbaudi beigās.</p>
+                    </div>
+                    <div class="check-bundle-actions">
+                        <p class="check-bundle-price" id="checkBundleText">&euro;229 nevis &euro;267</p>
+                        <button class="pricing-btn" id="checkBundleBtn" type="button">Izvēlēties visas</button>
+                    </div>
+                </div>
+
+                <div class="check-total" id="checkTotal">
+                    <p class="check-total-text" id="checkTotalText">Atzīmē grupas, kuras vēlies novērst.</p>
+                    <button class="btn btn-primary contact-cta-btn" type="button">Saņemt piedāvājumu</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section process-section" id="ka-tas-notiek">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">Kā tas notiek</h2>
+                        <p class="section-subtitle">No pārbaudes līdz salabotai lapai bez liekas sarakstes.</p>
+                    </div>
+                </div>
+
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="process-number">01</div>
+                        <h3>Pārbaudi</h3>
+                        <p>Ievadi adresi un saņem pārskatu ar konkrētiem trūkumiem un to nozīmi.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-number">02</div>
+                        <h3>Izvēlies grupas</h3>
+                        <p>Atzīmē tās grupas, kuras vēlies novērst, un redzi kopējo cenu uzreiz.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-number">03</div>
+                        <h3>Labojam un pārbaudām</h3>
+                        <p>Salabojam izvēlētos trūkumus un atkārtoti pārbaudām lapu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">WIP<span>.LV</span></div>
+                    <p class="footer-desc">Mājaslapu, interneta veikalu un programmatūras izstrāde, Google Ads reklāmas un AI automatizācija.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#portfolio">Portfolio</a>
+                    <a href="index.html#pakalpojumi">Pakalpojumi</a>
+                    <a href="index.html#cenas">Cenas</a>
+                    <a href="parbaude.html">Pārbaude</a>
+                    <a href="index.html#biezi-jautajumi">BUJ</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-policies">
+                    <a href="privacy-policy.html" target="_blank">Privātuma Politika</a>
+                    <a href="cookie-policy.html" target="_blank">Sīkdatņu Politika</a>
+                    <a href="#" id="cookieSettings">Sīkdatņu Iestatījumi</a>
+                </div>
+                <p>&copy; WIP.LV 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="contact-overlay" id="contactOverlay"></div>
+    <div class="contact-popup" id="contactPopup">
+        <button class="popup-close" id="popupClose">&times;</button>
+        <div class="popup-content">
+            <h2 class="popup-title">Sazināties</h2>
+            <p class="popup-subtitle">Aizpildiet formu un mēs sazināsimies ar jums 24 stundu laikā.</p>
+            <form class="popup-form" id="contactForm">
+                <div class="form-message" id="formMessage"></div>
+                <div class="form-fields">
+                    <div class="form-group">
+                        <label for="name">Vārds *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company_name">Uzņēmuma nosaukums *</label>
+                        <input type="text" id="company_name" name="company_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-pasts *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company_description">Īss uzņēmuma darbības paskaidrojums *</label>
+                        <textarea id="company_description" name="company_description" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Nosūtīt ziņu</button>
+                </div>
+            </form>
+            <div class="popup-contact-info">
+                <p>Kontaktinformācija:</p>
+                <a href="tel:+37124248764" class="popup-contact-link">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+371 2424 8764</span>
+                </a>
+                <a href="mailto:info@wip.lv" class="popup-contact-link">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>info@wip.lv</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>Sīkdatņu Preferences</h3>
+                <p>Mēs izmantojam sīkdatnes, lai uzlabotu jūsu pieredzi, analizētu vietnes trafiku un uzlabotu mūsu pakalpojumus. Mēs respektējam jūsu privātumu un ievērojam GDPR un Google Consent Mode v2.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn reject" id="cookieReject">Noraidīt Visu</button>
+                <button class="cookie-btn accept-all" id="cookieAcceptAll">Pieņemt Visu</button>
+                <button class="cookie-btn customize" id="cookieCustomize">Pielāgot</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cookie-modal" id="cookieModal">
+        <div class="cookie-modal-content">
+            <button class="modal-close" id="cookieModalClose">&times;</button>
+            <h2>Sīkdatņu Preferences</h2>
+
+            <div class="cookie-category">
+                <div class="category-header">
+                    <label class="category-toggle">
+                        <input type="checkbox" class="category-checkbox" data-category="necessary" checked disabled>
+                        <span class="toggle-switch"></span>
+                        <span class="category-title">Nepieciešamās Sīkdatnes</span>
+                    </label>
+                    <span class="category-badge required">Obligātas</span>
+                </div>
+                <p class="category-description">Būtiskas vietnes funkcionalitātei, drošībai un lietotāja sesijas pārvaldībai.</p>
+            </div>
+
+            <div class="cookie-category">
+                <div class="category-header">
+                    <label class="category-toggle">
+                        <input type="checkbox" class="category-checkbox" data-category="analytics">
+                        <span class="toggle-switch"></span>
+                        <span class="category-title">Analītikas Sīkdatnes</span>
+                    </label>
+                </div>
+                <p class="category-description">Palīdz mums saprast, kā apmeklētāji izmanto mūsu vietni, lai uzlabotu veiktspēju un lietotāja pieredzi.</p>
+            </div>
+
+            <div class="cookie-category">
+                <div class="category-header">
+                    <label class="category-toggle">
+                        <input type="checkbox" class="category-checkbox" data-category="marketing">
+                        <span class="toggle-switch"></span>
+                        <span class="category-title">Mārketinga Sīkdatnes</span>
+                    </label>
+                </div>
+                <p class="category-description">Tiek izmantotas, lai izsekotu apmeklētājus visos vietnēs personalizētai reklāmai un mārketinga kampanīm.</p>
+            </div>
+
+            <div class="cookie-modal-actions">
+                <button class="cookie-btn reject" id="cookieModalReject">Noraidīt Visu</button>
+                <button class="cookie-btn accept-all" id="cookieModalAccept">Pieņemt Visu</button>
+                <button class="cookie-btn save" id="cookieModalSave">Saglabāt Preferences</button>
+            </div>
+
+            <p class="cookie-legal">
+                <a href="/privacy-policy.html" target="_blank">Privātuma Politika</a> •
+                <a href="/cookie-policy.html" target="_blank">Sīkdatņu Politika</a>
+            </p>
+        </div>
+        <div class="cookie-modal-overlay" id="cookieModalOverlay"></div>
+    </div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Atpakaļ uz augšu">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js?v=1.5.3"></script>
+    <script src="js/check.js?v=1"></script>
+</body>
+</html>

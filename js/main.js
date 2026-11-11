@@ -750,7 +750,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // LOGO CLICK
     const logoLink = document.querySelector('.logo');
-    if (logoLink) logoLink.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    if (logoLink) logoLink.addEventListener('click', (e) => {
+        const href = logoLink.getAttribute('href');
+        if (href === null || href === '' || href === '#') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
     
     // FAQ ACCORDION
     const faqItems = document.querySelectorAll('.faq-item');
