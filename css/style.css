@@ -3129,12 +3129,6 @@ footer {
     border-color: var(--accent);
 }
 
-.check-note {
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--text-muted2);
-}
-
 .check-status {
     margin-top: 18px;
     font-size: 14px;

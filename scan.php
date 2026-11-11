@@ -344,12 +344,12 @@ if (!$isHttps) {
 } elseif ($hsts !== '') {
     $c['hsts'] = ['status' => 'warn', 'detail' => 'max-age=0'];
 } else {
-    $c['hsts'] = ['status' => 'fail', 'detail' => 'Nav galvenes'];
+    $c['hsts'] = ['status' => 'fail', 'detail' => 'HSTS nav iestatīts'];
 }
 
 $csp = header_value($headers, 'content-security-policy');
 if ($csp === '') {
-    $c['csp'] = ['status' => 'fail', 'detail' => 'Nav galvenes'];
+    $c['csp'] = ['status' => 'fail', 'detail' => 'CSP nav iestatīts'];
 } else {
     $missing = [];
     foreach (['object-src', 'base-uri', 'frame-ancestors'] as $directive) {
@@ -367,19 +367,19 @@ $cspFrame = $csp !== '' && stripos($csp, 'frame-ancestors') !== false;
 if (in_array($xfo, ['deny', 'sameorigin'], true) || $cspFrame) {
     $c['frame'] = ['status' => 'pass', 'detail' => $cspFrame ? 'CSP frame-ancestors' : 'X-Frame-Options: ' . $xfo];
 } else {
-    $c['frame'] = ['status' => 'fail', 'detail' => $xfo !== '' ? 'X-Frame-Options: ' . $xfo : 'Nav galvenes'];
+    $c['frame'] = ['status' => 'fail', 'detail' => $xfo !== '' ? 'X-Frame-Options: ' . $xfo : 'X-Frame-Options nav'];
 }
 
-$c['nosniff'] = check(strtolower(header_value($headers, 'x-content-type-options')) === 'nosniff', 'Nav galvenes', '');
+$c['nosniff'] = check(strtolower(header_value($headers, 'x-content-type-options')) === 'nosniff', 'X-Content-Type-Options nav', '');
 $referrer = strtolower(header_value($headers, 'referrer-policy'));
 if ($referrer === '') {
-    $c['referrer'] = ['status' => 'fail', 'detail' => 'Nav galvenes'];
+    $c['referrer'] = ['status' => 'fail', 'detail' => 'Referrer-Policy nav'];
 } elseif (str_contains($referrer, 'unsafe-url')) {
     $c['referrer'] = ['status' => 'warn', 'detail' => $referrer];
 } else {
     $c['referrer'] = ['status' => 'pass', 'detail' => $referrer];
 }
-$c['permissions'] = check(header_value($headers, 'permissions-policy') !== '', 'Nav galvenes', '');
+$c['permissions'] = check(header_value($headers, 'permissions-policy') !== '', 'Permissions-Policy nav', '');
 
 $disclosure = [];
 foreach (['server', 'x-powered-by', 'x-aspnet-version'] as $name) {
@@ -472,7 +472,7 @@ if (preg_match('~bootstrap[.\-/]?(\d+\.\d+(?:\.\d+)?)~i', $html, $m) && version_
 }
 $c['libs'] = $oldLibs
     ? ['status' => 'warn', 'detail' => implode(', ', array_unique($oldLibs))]
-    : ['status' => 'pass', 'detail' => 'Novecojušas bibliotēkas nav atrastas'];
+    : ['status' => 'pass', 'detail' => 'Versijas ir aktuālas'];
 
 // Email and domain trust.
 $spf = '';

@@ -16,7 +16,7 @@
     <meta property="og:description" content="Drošība, e-pasts un MI redzamība vienā pārskatā. Pārbaudi savu mājaslapu bez maksas.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wip.lv/scan/">
-    <link rel="stylesheet" href="/css/style.css?v=86">
+    <link rel="stylesheet" href="/css/style.css?v=87">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
@@ -54,15 +54,14 @@
                 <div class="check-hero-inner">
                     <p class="check-eyebrow">Bezmaksas pārbaude</p>
                     <h1>Ko par tavu mājaslapu redz pārlūks, pasts un MI.</h1>
-                    <p class="check-intro">Ievadi adresi un saņem pārskatu par drošību, e-pasta autentifikāciju un MI uztveramību. Pārbaude ir pasīva: lapā nekas netiek mainīts, un nekas nav jāreģistrē.</p>
+                    <p class="check-intro">Pārskats par drošības iestatījumiem, e-pasta autentifikāciju un to, cik labi MI rīki nolasa tavu saturu. Redzi konkrētos trūkumus, to nozīmi un cenu par katras grupas novēršanu.</p>
 
                     <form class="check-form" id="checkForm" novalidate>
-                        <label class="check-label" for="checkUrl">Mājaslapas adrese</label>
+                        <label class="check-label" for="checkUrl">Vietnes adrese</label>
                         <div class="check-form-row">
                             <input class="check-input" id="checkUrl" name="url" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" required placeholder="tavaadrese.lv">
                             <button class="btn btn-primary" id="checkSubmit" type="submit">Pārbaudīt</button>
                         </div>
-                        <p class="check-note">Pārbaudi tikai savas mājaslapas vai tās, kuru pārbaudi esi saskaņojis ar īpašnieku.</p>
                     </form>
                     <p class="check-status" id="checkStatus" role="status" aria-live="polite" hidden></p>
                 </div>
@@ -86,12 +85,12 @@
                     </div>
                 </div>
 
-                <p class="check-callout">Cena attiecas uz visiem grupas trūkumiem no tavas pārbaudes. Piemēram, drošības grupā par vienu cenu salabojam galvenes, sīkdatnes un servera iestatījumus kopā.</p>
+                <p class="check-callout">Vienā cenā ietilpst visi grupas trūkumi, ko atrada tava pārbaude. Piemēram, drošības grupā viena cena sedz galvenes, sīkdatņu karodziņus un servera iestatījumus.</p>
 
                 <div class="check-packages">
                     <article class="check-pkg" data-package="security">
                         <h3>Drošība</h3>
-                        <p class="check-pkg-desc">Pārlūka aizsardzība, galvenes, sīkdatnes un publiski pieejamie faili.</p>
+                        <p class="check-pkg-desc">Pārlūka aizsardzība, drošības galvenes, sīkdatņu drošība un publiski pieejamie faili.</p>
                         <p class="check-pkg-price"><span>&euro;99</span> vienreizēji par visu grupu</p>
                         <p class="check-pkg-found" data-pkg-found>Pārbaudi lapu, lai šeit redzētu savus trūkumus.</p>
                         <ul class="check-pkg-issues" data-pkg-issues hidden></ul>
@@ -335,6 +334,6 @@
     </button>
 
     <script src="/js/main.js?v=1.5.4"></script>
-    <script src="/js/check.js?v=4"></script>
+    <script src="/js/check.js?v=5"></script>
 </body>
 </html>
