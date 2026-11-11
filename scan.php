@@ -192,6 +192,7 @@ function check(bool $pass, string $detail = '', string $warnDetail = ''): array
 
 /* ---------------------------------------------------------------- input */
 
+$outLang = (($_GET['lang'] ?? '') === 'en') ? 'en' : 'lv';
 $raw = trim((string)($_GET['url'] ?? $_POST['url'] ?? ''));
 if ($raw === '' || mb_strlen($raw) > 300) {
     fail('invalid');
@@ -623,6 +624,84 @@ $c['nojs'] = $textLength >= 400
         : ['status' => 'fail', 'detail' => $textLength . ' rakstzīmes bez JavaScript']);
 
 /* ---------------------------------------------------------------- output */
+
+function localize_detail(string $detail, string $lang): string
+{
+    if ($lang !== 'en') {
+        return $detail;
+    }
+    static $map = [
+        'HSTS nav iestatīts' => 'HSTS is not set',
+        'CSP nav iestatīts' => 'CSP is not set',
+        'Politika ir pilna' => 'Policy is complete',
+        'X-Frame-Options nav' => 'No X-Frame-Options',
+        'X-Content-Type-Options nav' => 'No X-Content-Type-Options',
+        'Referrer-Policy nav' => 'No Referrer-Policy',
+        'Permissions-Policy nav' => 'No Permissions-Policy',
+        'Versijas netiek atklātas' => 'No versions exposed',
+        'Visi ārējie faili ar parakstu' => 'All external assets signed',
+        'Sīkdatnes netiek iestatītas' => 'No cookies set',
+        'Contact nav atrasts' => 'No Contact entry',
+        'Nav atrasti' => 'None found',
+        'Versijas ir aktuālas' => 'Versions are current',
+        'Nav SPF ieraksta' => 'No SPF record',
+        'SPF ar -all' => 'SPF with -all',
+        'SPF ar ~all' => 'SPF with ~all',
+        'SPF beidzas ar +all' => 'SPF ends with +all',
+        'SPF beidzas ar ?all' => 'SPF ends with ?all',
+        'SPF bez all mehānisma' => 'SPF without an all mechanism',
+        'Nav DMARC ieraksta' => 'No DMARC record',
+        'p=none (tikai novēro)' => 'p=none (monitor only)',
+        'Politika nav norādīta' => 'Policy not set',
+        'Standarta selektoros nav atrasts' => 'Not found under standard selectors',
+        'MX ieraksti ir' => 'MX records present',
+        'Domēns e-pastu nesaņem' => 'Domain does not receive email',
+        'CAA ieraksts ir' => 'CAA record present',
+        'Nav CAA ieraksta' => 'No CAA record',
+        'Nav MTA-STS ieraksta' => 'No MTA-STS record',
+        'Nav atklātu adreses' => 'No exposed addresses',
+        'robots.txt nav atrasts' => 'robots.txt not found',
+        'Visa lapa aizliegta robotiem' => 'Whole site disallowed for crawlers',
+        'MI roboti nav aizliegti' => 'AI crawlers are not blocked',
+        'llms.txt nav atrasts' => 'llms.txt not found',
+        'Sitemap nav atrasts' => 'Sitemap not found',
+        'Nav meta description' => 'No meta description',
+        'Nav Open Graph tagu' => 'No Open Graph tags',
+        'Nav lang atribūta' => 'No lang attribute',
+        'Nav <h1>' => 'No <h1>',
+        'Nav <title>' => 'No <title>',
+        'Strukturētie dati ir' => 'Structured data present',
+        'Nav schema.org datu' => 'No schema.org data',
+        'HTTPS darbojas, http:// versija nepāradresē' => 'HTTPS works, http:// version does not redirect',
+        '1 virsraksts' => '1 heading',
+    ];
+    if (isset($map[$detail])) {
+        return $map[$detail];
+    }
+    $patterns = [
+        '~^Trūkst: (.+)$~' => 'Missing: $1',
+        '~^(\d+) faili bez integrity$~' => '$1 assets without integrity',
+        '~^(\d+) sīkdatnes ar Secure, HttpOnly, SameSite$~' => '$1 cookies with Secure, HttpOnly, SameSite',
+        '~^(\d+) no (\d+) bez Secure/HttpOnly/SameSite$~' => '$1 of $2 without Secure/HttpOnly/SameSite',
+        '~^(\d+) adreses atklātā tekstā$~' => '$1 addresses in plain text',
+        '~^Atrasts selektors: (.+)$~' => 'Found selector: $1',
+        '~^Aizliegts: (.+)$~' => 'Blocked: $1',
+        '~^Ir: (.+)$~' => 'Present: $1',
+        '~^(\d+) rakstzīmes bez JavaScript$~' => '$1 characters without JavaScript',
+        '~^(\d+) rakstzīmes$~' => '$1 characters',
+        '~^(\d+) virsraksti$~' => '$1 headings',
+    ];
+    foreach ($patterns as $pattern => $replacement) {
+        if (preg_match($pattern, $detail)) {
+            return preg_replace($pattern, $replacement, $detail);
+        }
+    }
+    return $detail;
+}
+
+foreach ($c as $checkId => $checkResult) {
+    $c[$checkId]['detail'] = localize_detail($checkResult['detail'], $outLang);
+}
 
 respond([
     'ok' => true,

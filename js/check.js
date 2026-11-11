@@ -518,7 +518,7 @@
             submitBtn.setAttribute('aria-busy', 'true');
         }
 
-        fetch('/scan.php?url=' + encodeURIComponent(value), { headers: { Accept: 'application/json' } })
+        fetch('/scan.php?url=' + encodeURIComponent(value) + '&lang=' + encodeURIComponent(lang), { headers: { Accept: 'application/json' } })
             .then(function (response) {
                 return response.json().catch(function () { return null; });
             })
