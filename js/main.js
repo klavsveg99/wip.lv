@@ -606,6 +606,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // GOOGLE ADS CALCULATOR
+    const adsCalc = document.getElementById('adsCalc');
+    if (adsCalc) {
+        const adsEnglish = document.documentElement.lang === 'en';
+        const industryProfiles = {
+            services: { cpc: 0.75, cr: 0.045, close: 0.32, value: 250 },
+            store: { cpc: 0.42, cr: 0.023, close: 1, value: 45 },
+            b2b: { cpc: 1.35, cr: 0.028, close: 0.18, value: 1400 }
+        };
+        const adsBudget = document.getElementById('adsBudget');
+        const adsValue = document.getElementById('adsValue');
+        const adsIndustry = document.getElementById('adsIndustry');
+        const adsBudgetOut = document.getElementById('adsBudgetOut');
+        const adsValueOut = document.getElementById('adsValueOut');
+        const adsClicks = document.getElementById('adsClicks');
+        const adsLeads = document.getElementById('adsLeads');
+        const adsClients = document.getElementById('adsClients');
+        const adsCpa = document.getElementById('adsCpa');
+        const adsRevenue = document.getElementById('adsRevenue');
+        const adsRoi = document.getElementById('adsRoi');
+        const adsNumber = new Intl.NumberFormat(adsEnglish ? 'en-GB' : 'lv-LV', { maximumFractionDigits: 0, useGrouping: 'always' });
+        const adsDecimal = new Intl.NumberFormat(adsEnglish ? 'en-GB' : 'lv-LV', { minimumFractionDigits: 1, maximumFractionDigits: 1, useGrouping: 'always' });
+
+        function adsMoney(value) {
+            return adsEnglish ? '€' + adsNumber.format(value) : adsNumber.format(value) + ' €';
+        }
+
+        function updateAdsCalc() {
+            const profile = industryProfiles[adsIndustry.value] || industryProfiles.services;
+            const budget = Number(adsBudget.value);
+            const clientValue = Number(adsValue.value);
+            const clicks = budget / profile.cpc;
+            const leads = clicks * profile.cr;
+            const clients = leads * profile.close;
+            const revenue = clients * clientValue;
+            const costPerClient = clients > 0 ? budget / clients : 0;
+            const roi = budget > 0 ? revenue / budget : 0;
+
+            adsBudgetOut.textContent = adsMoney(budget);
+            adsValueOut.textContent = adsMoney(clientValue);
+            adsClicks.textContent = adsNumber.format(Math.round(clicks));
+            adsLeads.textContent = adsNumber.format(Math.round(leads));
+            adsClients.textContent = adsDecimal.format(clients);
+            adsCpa.textContent = adsMoney(Math.round(costPerClient));
+            adsRevenue.textContent = adsMoney(Math.round(revenue / 10) * 10);
+            adsRoi.textContent = adsEnglish
+                ? (roi < 1 ? 'The budget barely returns at this value.' : 'The budget returns about ' + adsDecimal.format(roi) + ' times.')
+                : (roi < 1 ? 'Pie šīs vērtības budžets neatmaksājas.' : 'Budžets atpelnās ' + adsDecimal.format(roi) + ' reizes.');
+        }
+
+        adsBudget.addEventListener('input', updateAdsCalc);
+        adsValue.addEventListener('input', updateAdsCalc);
+        adsIndustry.addEventListener('change', () => {
+            const profile = industryProfiles[adsIndustry.value] || industryProfiles.services;
+            adsValue.value = profile.value;
+            updateAdsCalc();
+        });
+        updateAdsCalc();
+    }
+
     // CONTACT POPUP
     const contactPopup = document.getElementById('contactPopup');
     const contactOverlay = document.getElementById('contactOverlay');
