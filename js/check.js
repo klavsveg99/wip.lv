@@ -344,7 +344,9 @@
         if (metaBox) {
             var bits = [data.host];
             if (data.platform && data.platform !== 'unknown') {
-                bits.push(UI.platform + ': ' + data.platform.charAt(0).toUpperCase() + data.platform.slice(1));
+                var platformNames = { wordpress: 'WordPress', shopify: 'Shopify', wix: 'Wix', webflow: 'Webflow', joomla: 'Joomla', drupal: 'Drupal', bitrix: 'Bitrix' };
+                var platform = platformNames[data.platform] || (data.platform.charAt(0).toUpperCase() + data.platform.slice(1));
+                bits.push(UI.platform + ': ' + platform);
             }
             if (data.checked_at) bits.push(UI.checked + ': ' + data.checked_at);
             metaBox.textContent = bits.join(' · ');
