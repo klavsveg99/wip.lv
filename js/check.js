@@ -510,6 +510,7 @@
         lastUrl = value.replace(/^https?:\/\//i, '').replace(/\/+$/, '');
 
         setStatus(UI.loading, 'loading');
+        if (report) report.hidden = true;
         if (submitBtn) {
             submitBtn.disabled = true;
             submitBtn.setAttribute('aria-busy', 'true');
