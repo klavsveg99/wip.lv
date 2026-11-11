@@ -732,6 +732,36 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
     if (mainNav) mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
+
+    // ACTIVE SECTION IN NAV
+    const navSectionLinks = Array.from(document.querySelectorAll('.nav-items-grid a[href^="#"]'))
+        .filter((link) => link.getAttribute('href').length > 1)
+        .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
+        .filter((item) => item.section);
+
+    if (navSectionLinks.length) {
+        const setActiveSection = () => {
+            let current = null;
+            navSectionLinks.forEach(({ link, section }) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 180 && rect.bottom > 180) current = link;
+            });
+            navSectionLinks.forEach(({ link }) => {
+                const isCurrent = link === current;
+                link.classList.toggle('active', isCurrent);
+                if (isCurrent) {
+                    link.setAttribute('aria-current', 'true');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        };
+        window.addEventListener('scroll', setActiveSection, { passive: true });
+        window.addEventListener('resize', setActiveSection);
+        window.addEventListener('hashchange', setActiveSection);
+        window.addEventListener('load', setActiveSection);
+        setActiveSection();
+    }
     
     // ESCAPE KEY
     document.addEventListener('keydown', (e) => {
