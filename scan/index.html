@@ -16,7 +16,7 @@
     <meta property="og:description" content="Drošība, e-pasts un MI redzamība vienā pārskatā. Pārbaudi savu mājaslapu bez maksas.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wip.lv/scan/">
-    <link rel="stylesheet" href="/css/style.css?v=94">
+    <link rel="stylesheet" href="/css/style.css?v=95">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a" crossorigin="anonymous">
 </head>
 <body class="check-page">
@@ -200,6 +200,78 @@
                         <p>Salabojam izvēlētos trūkumus un atkārtoti pārbaudām lapu.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="check-extra" id="ads-kalkulators">
+            <div class="container">
+                <details class="ads-calc-fold">
+                    <summary class="ads-calc-summary">
+                        <span class="ads-calc-summary-text">
+                            <strong>Google Ads kalkulators</strong>
+                            <span>Aptuveni redzi, ko mēneša budžets varētu atnest papildus klientu un ieņēmumu veidā.</span>
+                        </span>
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </summary>
+                    <div class="ads-calc" id="adsCalc">
+                        <div class="ads-calc-head">
+                            <h3>Aptuvenais ieguvums no Google Ads</h3>
+                            <p>Pabīdi slīdņus un redzi, cik papildu klientu un ieņēmumu mēneša budžets varētu atnest.</p>
+                        </div>
+
+                        <div class="ads-calc-grid">
+                            <div class="ads-calc-controls">
+                                <div class="ads-calc-field">
+                                    <label class="ads-calc-label" for="adsBudget">
+                                        <span>Mēneša budžets</span>
+                                        <output class="ads-calc-value" id="adsBudgetOut" for="adsBudget">300 €</output>
+                                    </label>
+                                    <input type="range" id="adsBudget" min="100" max="3000" step="50" value="300">
+                                </div>
+                                <div class="ads-calc-field">
+                                    <label class="ads-calc-label" for="adsValue">
+                                        <span>Vidējā darījuma vērtība</span>
+                                        <output class="ads-calc-value" id="adsValueOut" for="adsValue">250 €</output>
+                                    </label>
+                                    <input type="range" id="adsValue" min="20" max="10000" step="10" value="250">
+                                </div>
+                                <div class="ads-calc-field">
+                                    <label class="ads-calc-label" for="adsIndustry"><span>Nozare</span></label>
+                                    <select id="adsIndustry">
+                                        <option value="services" selected>Pakalpojumi</option>
+                                        <option value="store">Interneta veikals</option>
+                                        <option value="b2b">B2B un ražošana</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="ads-calc-results">
+                                <div class="ads-calc-stat">
+                                    <span>Klikšķi mēnesī</span>
+                                    <strong id="adsClicks">400</strong>
+                                </div>
+                                <div class="ads-calc-stat">
+                                    <span>Pieprasījumi mēnesī</span>
+                                    <strong id="adsLeads">18</strong>
+                                </div>
+                                <div class="ads-calc-stat">
+                                    <span>Jauni klienti mēnesī</span>
+                                    <strong id="adsClients">5,8</strong>
+                                </div>
+                                <div class="ads-calc-stat">
+                                    <span>Viens klients izmaksā</span>
+                                    <strong id="adsCpa">52 €</strong>
+                                </div>
+                                <div class="ads-calc-stat ads-calc-stat-wide">
+                                    <span>Papildu ieņēmumi mēnesī</span>
+                                    <strong id="adsRevenue">1 440 €</strong>
+                                </div>
+                                <p class="ads-calc-roi" id="adsRoi">Budžets atpelnās 4,8 reizes.</p>
+                            </div>
+                        </div>
+
+                        <p class="ads-calc-note">Skaitļi ir ilustratīvi un balstīti uz izvēlētās nozares vidējiem rādītājiem: maksu par klikšķi, konversiju un slēgšanas rādītāju. Reālos rezultātus nosaka piedāvājums, konkurence un mājaslapa. Reklāmas budžets ir atsevišķi no uzturēšanas maksas.</p>
+                    </div>
+                </details>
             </div>
         </section>
     </main>

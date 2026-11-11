@@ -3763,6 +3763,74 @@ footer {
     }
 }
 
+/* Google Ads calculator as a folded panel on the check page */
+.check-extra {
+    padding: 0 0 100px;
+}
+
+.ads-calc-fold {
+    border-top: 1px solid var(--border);
+}
+
+.ads-calc-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px 0;
+    list-style: none;
+    cursor: pointer;
+}
+
+.ads-calc-summary::-webkit-details-marker {
+    display: none;
+}
+
+.ads-calc-summary-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ads-calc-summary-text strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ads-calc-summary-text span {
+    max-width: 620px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.ads-calc-summary i {
+    flex-shrink: 0;
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+}
+
+.ads-calc-fold[open] .ads-calc-summary i {
+    transform: rotate(180deg);
+}
+
+.ads-calc-fold .ads-calc {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+@media (max-width: 560px) {
+    .ads-calc-summary {
+        padding: 24px 0;
+    }
+
+    .check-extra {
+        padding-bottom: 72px;
+    }
+}
+
 /* SUBPAGE BACKGROUND VARIANT
    The global four-wave body pattern shifts with page height and cut across
    section borders on long pages, so subpages anchor two quieter waves to
