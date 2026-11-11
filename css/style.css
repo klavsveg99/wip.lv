@@ -3761,3 +3761,14 @@ footer {
         background-size: 320px auto;
     }
 }
+
+/* Animated pixel block on the check hero, same one as the front page hero */
+.check-hero .container {
+    position: relative;
+}
+
+@media (max-width: 767px) {
+    .check-hero .hero-pixels {
+        display: none;
+    }
+}
