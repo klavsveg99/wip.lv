@@ -27,6 +27,11 @@
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # The website check lives at /scan (old page names keep working)
+    RewriteRule ^parbaude\.html$ /scan/ [R=301,L]
+    RewriteRule ^parbaude-en\.html$ /scan/en/ [R=301,L]
+
     
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
