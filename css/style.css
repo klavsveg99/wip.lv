@@ -287,31 +287,6 @@ nav a:not(.header-cta).active::after {
     display: none !important;
 }
 
-.lang-switch {
-    display: flex;
-    gap: 8px;
-    border: none;
-    border-radius: 6px;
-    overflow: visible;
-}
-
-.lang-switch a {
-    padding: 6px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--text);
-    background: transparent;
-    transition: all 0.2s;
-    border-radius: 4px;
-}
-
-.lang-switch a:hover,
-.lang-switch a.active {
-    background: var(--accent);
-    color: white !important;
-}
-
 nav a:not(.header-cta)::after {
     content: '';
     position: absolute;
@@ -351,34 +326,44 @@ nav a:not(.header-cta).active::after {
 
 .lang-switch {
     display: flex;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
+    align-items: baseline;
+    gap: 8px;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+    margin-left: 6px;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 .lang-switch a {
-    padding: 6px 12px;
-    font-size: 12px;
-    font-weight: 600;
+    width: auto;
+    height: auto;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     text-decoration: none;
     color: var(--text-muted2);
-    border-right: 1px solid var(--border);
-    transition: all 0.2s;
-    width: 44px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 0;
+    transition: color 0.2s;
+    display: inline;
 }
 
-.lang-switch a:last-child {
-    border-right: none;
+.lang-switch a + a::before {
+    content: '/';
+    margin-right: 8px;
+    color: var(--text-muted2);
+    opacity: 0.5;
 }
 
 .lang-switch a:hover, .lang-switch a.active {
-    background: var(--accent);
-    color: var(--bg);
+    background: transparent;
+    color: var(--text);
+}
+
+.lang-switch a.active {
+    font-weight: 700;
 }
 
 .lang-switch a::after {
@@ -2687,8 +2672,8 @@ footer {
     }
     
     nav .lang-switch a {
-        padding: 10px 16px;
-        font-size: 14px;
+        padding: 6px 0;
+        font-size: 13px;
     }
     
     nav .contact-cta-btn {
