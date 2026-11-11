@@ -505,6 +505,7 @@
         var value = (url || '').trim();
         if (!value) {
             setStatus(UI.errorInvalid, 'error');
+            if (report) report.hidden = true;
             return;
         }
         lastUrl = value.replace(/^https?:\/\//i, '').replace(/\/+$/, '');
