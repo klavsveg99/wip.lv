@@ -2719,7 +2719,7 @@ footer {
         margin-top: 32px;
         padding: 8px 18px;
         border: 1px solid var(--border-dark);
-        border-radius: 8px;
+        border-radius: 0px;
         background: transparent;
         color: var(--text-muted);
         font-size: 11px;
@@ -2754,6 +2754,7 @@ footer {
         margin-top: 20px;
         padding: 16px 32px !important;
         font-size: 16px !important;
+	border-radius: 0px !important;
     }
     
     .mobile-menu-overlay {
@@ -3934,3 +3935,4 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
