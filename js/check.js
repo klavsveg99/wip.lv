@@ -1,5 +1,5 @@
 /**
- * Free website check: renders the report from scan.php and fills the
+ * Free website audit: renders the report from scan.php and fills the
  * fix packages with the issues found on the visitor's site.
  */
 (function () {
@@ -59,21 +59,21 @@
             contactTotal: 'Kopā: '
         },
         en: {
-            loading: 'Checking the page. This takes a few seconds.',
+            loading: 'Auditing the site. This takes a few seconds.',
             errorInvalid: 'Type the site address, for example yoursite.com.',
-            errorGeneric: 'The check could not be completed. Please try again.',
-            errorNetwork: 'We could not reach the check server. Please try again.',
+            errorGeneric: 'The audit could not be completed. Please try again.',
+            errorNetwork: 'We could not reach the audit server. Please try again.',
             errors: {
                 invalid: 'That address is not valid.',
                 scheme: 'Only http and https addresses are supported.',
                 host: 'The address has no valid domain name.',
                 port: 'Only standard ports are supported.',
-                private: 'This address cannot be checked.',
-                dns: 'The domain does not respond. Check the address.',
+                private: 'This address cannot be audited.',
+                dns: 'The domain does not respond. Verify the address.',
                 tls: 'The certificate is not valid, so the page cannot be reached securely.',
                 unreachable: 'The page did not respond in time.',
                 http: 'The page returns an error status.',
-                blocked: 'The site blocks automated checks. Open it in a browser and check it manually.'
+                blocked: 'The site blocks automated audits. Open it in a browser and review it manually.'
             },
             scoreSecurity: 'Security',
             scoreEmail: 'Email',
@@ -92,7 +92,7 @@
                 if (n === 0) return 'No issues in this group.';
                 return 'Found on your site: ' + n + (n === 1 ? ' issue' : ' issues');
             },
-            foundBeforeScan: 'Run the check to see your issues here.',
+            foundBeforeScan: 'Run the audit to see your issues here.',
             noneSelected: 'Select the groups you want fixed.',
             total: 'Total: ',
             bundleHint: 'All three groups together: ',
@@ -100,8 +100,8 @@
             currency: ' EUR',
             bundleCta: 'Select all',
             platform: 'Platform',
-            checked: 'Checked',
-            contactIntro: 'Checked site: ',
+            checked: 'Audited',
+            contactIntro: 'Audited site: ',
             contactGroups: 'Selected groups: ',
             contactTotal: 'Total: '
         }
@@ -153,7 +153,7 @@
             hsts: ['HSTS header', 'Without HSTS the browser can be moved to an unencrypted version, for example on public Wi-Fi.'],
             csp: ['Content Security Policy', 'Without a full policy the page can run a script that arrives from elsewhere or through an input field.'],
             frame: ['Clickjacking protection', 'The page can be placed in a foreign frame and invisible buttons can trick the visitor into clicking what they cannot see.'],
-            nosniff: ['MIME type check', 'The browser can guess a file type and run an uploaded file as code.'],
+            nosniff: ['MIME type protection', 'The browser can guess a file type and run an uploaded file as code.'],
             referrer: ['Referrer-Policy', 'An address with search or order data can leak to other sites.'],
             permissions: ['Permissions-Policy', 'A foreign script can request the camera or location in the visitor name.'],
             server: ['Hiding software versions', 'A visible server or CMS version helps an attacker pick a known vulnerability.'],
