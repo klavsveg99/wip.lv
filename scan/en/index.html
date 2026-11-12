@@ -16,7 +16,7 @@
     <meta property="og:description" content="Security, email and AI visibility in one report. Audit your website for free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wip.lv/scan/en/">
-    <link rel="stylesheet" href="/css/style.css?v=96">
+    <link rel="stylesheet" href="/css/style.css?v=97">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a" crossorigin="anonymous">
 </head>
 <body class="check-page">
@@ -308,6 +308,11 @@
         <div class="popup-content">
             <h2 class="popup-title">Contact us</h2>
             <p class="popup-subtitle">Fill in the form and we will get back to you within 24 hours.</p>
+            <div class="popup-selection" id="popupSelection" hidden>
+                <p class="popup-selection-title">Selected groups</p>
+                <ul class="popup-selection-list" id="popupSelectionList"></ul>
+                <p class="popup-selection-total" id="popupSelectionTotal"></p>
+            </div>
             <form class="popup-form" id="contactForm">
                 <div class="form-message" id="formMessage"></div>
                 <div class="form-fields">
@@ -416,6 +421,6 @@
     </button>
 
     <script src="/js/main.js?v=1.5.6"></script>
-    <script src="/js/check.js?v=12"></script>
+    <script src="/js/check.js?v=13"></script>
 </body>
 </html>

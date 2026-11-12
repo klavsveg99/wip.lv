@@ -230,6 +230,9 @@
     var bundleBtn = document.getElementById('checkBundleBtn');
     var bundleText = document.getElementById('checkBundleText');
     var descriptionField = document.getElementById('company_description');
+    var popupSelection = document.getElementById('popupSelection');
+    var popupSelectionList = document.getElementById('popupSelectionList');
+    var popupSelectionTotal = document.getElementById('popupSelectionTotal');
 
     var lastUrl = '';
     var totalIssues = 0;
@@ -248,9 +251,20 @@
         return copy ? copy[0] : id;
     }
 
+    function packageById(id) {
+        return PACKAGES.filter(function (pkg) { return pkg.id === id; })[0];
+    }
+
     function packageName(id) {
-        var found = PACKAGES.filter(function (pkg) { return pkg.id === id; })[0];
+        var found = packageById(id);
         return found ? found.name : id;
+    }
+
+    function selectionSum(selected) {
+        return selected.reduce(function (acc, id) {
+            var pkg = packageById(id);
+            return acc + (pkg ? pkg.price : 0);
+        }, 0);
     }
 
     function setStatus(text, tone) {
@@ -495,13 +509,42 @@
             .map(function (inputEl) { return inputEl.value; });
     }
 
+    function renderSelection() {
+        if (!popupSelection || !popupSelectionList || !popupSelectionTotal) return;
+        var selected = selectedPackages();
+        popupSelectionList.textContent = '';
+        if (!selected.length) {
+            popupSelection.hidden = true;
+            return;
+        }
+
+        var isBundle = selected.length === PACKAGES.length;
+        var separate = PACKAGES.reduce(function (acc, pkg) { return acc + pkg.price; }, 0);
+
+        selected.forEach(function (id) {
+            var pkg = packageById(id);
+            if (!pkg) return;
+            var item = document.createElement('li');
+            var name = document.createElement('span');
+            name.textContent = pkg.name;
+            var price = document.createElement('span');
+            price.textContent = money(pkg.price);
+            item.appendChild(name);
+            item.appendChild(price);
+            popupSelectionList.appendChild(item);
+        });
+
+        popupSelectionTotal.textContent = UI.total +
+            money(isBundle ? BUNDLE_PRICE : selectionSum(selected)) +
+            (isBundle ? ' · ' + UI.save + money(separate - BUNDLE_PRICE) : '');
+        popupSelection.hidden = false;
+    }
+
     function updateTotal() {
+        renderSelection();
         if (!totalText) return;
         var selected = selectedPackages();
-        var sum = selected.reduce(function (acc, id) {
-            var pkg = PACKAGES.filter(function (p) { return p.id === id; })[0];
-            return acc + (pkg ? pkg.price : 0);
-        }, 0);
+        var sum = selectionSum(selected);
         var separate = PACKAGES.reduce(function (acc, pkg) { return acc + pkg.price; }, 0);
 
         if (!selected.length) {
