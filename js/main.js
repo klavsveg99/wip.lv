@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const adsRevenue = document.getElementById('adsRevenue');
         const adsRoi = document.getElementById('adsRoi');
         const adsNumber = new Intl.NumberFormat(adsEnglish ? 'en-GB' : 'lv-LV', { maximumFractionDigits: 0, useGrouping: 'always' });
-        const adsDecimal = new Intl.NumberFormat(adsEnglish ? 'en-GB' : 'lv-LV', { minimumFractionDigits: 1, maximumFractionDigits: 1, useGrouping: 'always' });
+        const adsDecimal = new Intl.NumberFormat(adsEnglish ? 'en-GB' : 'lv-LV', { maximumFractionDigits: 1, useGrouping: 'always' });
 
         function adsMoney(value) {
             return adsEnglish ? '€' + adsNumber.format(value) : adsNumber.format(value) + ' €';
@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const clientValue = Number(adsValue.value);
             const clicks = budget / profile.cpc;
             const leads = clicks * profile.cr;
-            const clients = leads * profile.close;
+            const clients = Math.ceil(leads * profile.close);
             const revenue = clients * clientValue;
             const costPerClient = clients > 0 ? budget / clients : 0;
             const roi = budget > 0 ? revenue / budget : 0;
@@ -652,8 +652,8 @@ document.addEventListener('DOMContentLoaded', () => {
             adsCpa.textContent = adsMoney(Math.round(costPerClient));
             adsRevenue.textContent = adsMoney(Math.round(revenue / 10) * 10);
             adsRoi.textContent = adsEnglish
-                ? (roi < 1 ? 'The budget barely returns at this value.' : 'The budget returns about ' + adsDecimal.format(roi) + ' times.')
-                : (roi < 1 ? 'Pie šīs vērtības budžets neatmaksājas.' : 'Budžets atpelnās ' + adsDecimal.format(roi) + ' reizes.');
+                ? (roi < 1 ? 'Estimated revenue is below the ad budget.' : 'Estimated revenue is about ' + adsDecimal.format(roi) + ' times the ad budget.')
+                : (roi < 1 ? 'Aprēķinātie ieņēmumi ir mazāki par reklāmas budžetu.' : 'Aprēķinātie ieņēmumi ir aptuveni ' + adsDecimal.format(roi) + ' reizes lielāki par reklāmas budžetu.');
         }
 
         adsBudget.addEventListener('input', updateAdsCalc);
